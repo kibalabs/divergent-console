@@ -1,0 +1,27 @@
+{
+  "name": "divergent-console",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "build-react-app --webpack-config-modifier ./config.webpack.js",
+    "start": "build-react-app --webpack-config-modifier ./config.webpack.js --start",
+    "start-dev": "build-react-app --webpack-config-modifier ./config.webpack.js --start --dev"
+  },
+  "dependencies": {
+    "@kibalabs/core": "0.4.4",
+    "@kibalabs/core-react": "0.4.4",
+    "@kibalabs/ui-react": "0.7.3",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-helmet": "5.2.1",
+    "styled-components": "5.2.0"
+  },
+  "devDependencies": {
+    "@kibalabs/build": "0.3.2",
+    "@types/node": "12.12.35",
+    "@types/react": "16.9.34",
+    "@types/react-dom": "16.9.6",
+    "@types/react-helmet": "5.0.15",
+    "@types/styled-components": "5.1.3"
+  }
+}
