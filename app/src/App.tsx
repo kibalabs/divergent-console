@@ -29,8 +29,8 @@ export const App = (): React.ReactElement => {
         </Helmet>
         <Router>
           <Route path='/' page={EmptyPage} />
-          <Route path='/domains' page={DomainsPage}/>
-          <Route path='/domains/create' page={CreateDomainPage}/>
+          <Route path='/domains' page={DomainsPage} />
+          <Route path='/domains/create' page={CreateDomainPage} />
           <Route path='/domains/:domainId' page={DomainPage} />
           <Route path='/domains/:domainId/links/:linkId' page={LinkPage} />
           <Route path='/domains/:domainId/links/create' page={CreateLinkPage} />

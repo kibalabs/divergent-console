@@ -1,1 +1,1 @@
-export * from './domainCard';
+export * from './homeDomainCard';
