@@ -1,7 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useFavicon, Router, Route } from '@kibalabs/core-react';
-import { buildTheme, KibaApp, Text } from '@kibalabs/ui-react';
+import { buildTheme, KibaApp } from '@kibalabs/ui-react';
+
 import { EmptyPage } from './pages/emptyPage';
 import { DomainsPage } from './pages/domainsPage';
 import { DomainPage } from './pages/domainPage';
@@ -10,7 +11,11 @@ import { CreateDomainPage } from './pages/createDomainPage';
 import { CreateLinkPage } from './pages/createLinkPage';
 import { LinkPage } from './pages/linkPage';
 
-const theme = buildTheme();
+const theme = buildTheme({
+  colors: {
+    'brandPrimary': '#178A80',
+  }
+});
 
 export const App = (): React.ReactElement => {
   useFavicon('/assets/favicon.svg');
@@ -24,8 +29,8 @@ export const App = (): React.ReactElement => {
         </Helmet>
         <Router>
           <Route path='/' page={EmptyPage} />
-          <Route path='/domains' page={DomainsPage}/>
-          <Route path='/domains/create' page={CreateDomainPage}/>
+          <Route path='/domains' page={DomainsPage} />
+          <Route path='/domains/create' page={CreateDomainPage} />
           <Route path='/domains/:domainId' page={DomainPage} />
           <Route path='/domains/:domainId/links/:linkId' page={LinkPage} />
           <Route path='/domains/:domainId/links/create' page={CreateLinkPage} />
