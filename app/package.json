@@ -10,7 +10,7 @@
   "dependencies": {
     "@kibalabs/core": "0.4.4",
     "@kibalabs/core-react": "0.4.4",
-    "@kibalabs/ui-react": "0.7.3",
+    "@kibalabs/ui-react": "0.7.5-next.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-helmet": "5.2.1",
