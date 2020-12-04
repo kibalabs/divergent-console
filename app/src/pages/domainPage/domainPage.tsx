@@ -33,8 +33,7 @@ export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
         ) : (
           <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center} contentAlignment={Alignment.Start} isFullWidth={false}>
             <Text variant='header3'>{domain.url}</Text>
-            <Text variant='note'>{domain.isVerified ? 'verified' : 'unverified'}</Text>
-            {/* <Pill variant={domain.isVerified ? 'success-small' : 'default-small'} text={domain.isVerified ? 'verified' : 'unverified'} /> */}
+            <Pill variant={domain.isVerified ? 'success' : 'default'} text={domain.isVerified ? 'verified' : 'unverified'} />
           </Stack>
         )}
         <Spacing variant={PaddingSize.Wide} />

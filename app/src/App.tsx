@@ -11,9 +11,36 @@ import { CreateDomainPage } from './pages/createDomainPage';
 import { CreateLinkPage } from './pages/createLinkPage';
 import { LinkPage } from './pages/linkPage';
 
+const baseTheme = buildTheme();
 const theme = buildTheme({
   colors: {
     'brandPrimary': '#178A80',
+  },
+  pills: {
+    default: {
+      normal: {
+        default: {
+          background: {
+            padding: `${baseTheme.dimensions.paddingNarrow4} ${baseTheme.dimensions.padding}`,
+            'background-color': '$colors.brandPrimaryClear90',
+            'border-width': '1px',
+          },
+          text: {
+            'font-weight': 'normal',
+            'font-size': 'smaller',
+          }
+        }
+      }
+    },
+    success: {
+      normal: {
+        default: {
+          background: {
+            'background-color': '$colors.successClear90',
+          }
+        }
+      }
+    }
   }
 });
 
