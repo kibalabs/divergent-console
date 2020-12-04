@@ -1,10 +1,11 @@
 import React from 'react';
+import { KibaException } from '@kibalabs/core';
+import { useHistory } from '@kibalabs/core-react';
 import { ContainingView, Direction, Stack, Text, Spacing, PaddingSize } from '@kibalabs/ui-react';
 
 import { HomeDomain, Domain, DOMAINS, DOMAIN_ID_LINK_MAP } from '../../model';
 import { HomeDomainCard } from './components';
-import { useHistory } from '@kibalabs/core-react';
-import { KibaException } from '@kibalabs/core';
+import { asyncSleep } from '../../util';
 
 interface IDomainsPageProps {
 }
@@ -16,10 +17,6 @@ export const DomainsPage = (props: IDomainsPageProps): React.ReactElement => {
   React.useEffect((): void => {
     loadHomeDomains();
   }, []);
-
-  const asyncSleep = (sleepTime: number): Promise<void> => {
-    return new Promise(resolve => setTimeout(resolve, sleepTime));
-  }
 
   const loadHomeDomains = (): void => {
     asyncSleep(300).then((): void => {

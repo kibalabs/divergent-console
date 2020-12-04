@@ -1,8 +1,9 @@
 import React from 'react';
 import { KibaException } from '@kibalabs/core';
-import { Alignment, ContainingView, Direction, PaddingSize, Spacing, Stack, Text } from '@kibalabs/ui-react';
+import { Alignment, ContainingView, Direction, PaddingSize, Spacing, Stack, Text, Pill } from '@kibalabs/ui-react';
 
 import { Domain, DOMAIN_ID_MAP } from '../../model';
+import { asyncSleep } from '../../util';
 
 export interface IDomainPageProps {
   domainId: string;
@@ -13,10 +14,6 @@ export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
   React.useEffect((): void => {
     loadDomain();
   }, [props.domainId]);
-
-  const asyncSleep = (sleepTime: number): Promise<void> => {
-    return new Promise(resolve => setTimeout(resolve, sleepTime));
-  }
 
   const loadDomain = (): void => {
     asyncSleep(300).then((): void => {
