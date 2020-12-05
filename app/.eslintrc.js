@@ -24,6 +24,7 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    'import/ignore': 'react',
   },
   rules: {
     '@typescript-eslint/indent': ['error', 2],
@@ -38,5 +39,13 @@ module.exports = {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
     'arrow-body-style': 'off',
+    'sort-imports': ['error', { ignoreCase: true, ignoreDeclarationSort: true }],
+    'import/order': ['error', {
+      groups: ['builtin', 'external', 'internal'],
+      alphabetize: { order: 'asc', caseInsensitive: true },
+      pathGroups: [{ pattern: 'react', group: 'external', position: 'before' }],
+      pathGroupsExcludedImportTypes: ['react'],
+      'newlines-between': 'always',
+    }],
   },
 };

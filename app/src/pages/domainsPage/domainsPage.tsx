@@ -1,11 +1,12 @@
 import React from 'react';
+
 import { KibaException } from '@kibalabs/core';
 import { useHistory } from '@kibalabs/core-react';
-import { ContainingView, Direction, Stack, Text, Spacing, PaddingSize } from '@kibalabs/ui-react';
+import { ContainingView, Direction, PaddingSize, Spacing, Stack, Text } from '@kibalabs/ui-react';
 
-import { HomeDomain, Domain, DOMAINS, DOMAIN_ID_LINK_MAP } from '../../model';
-import { HomeDomainCard } from './components';
+import { Domain, DOMAIN_ID_LINK_MAP, DOMAINS, HomeDomain } from '../../model';
 import { asyncSleep } from '../../util';
+import { HomeDomainCard } from './components';
 
 interface IDomainsPageProps {
 }

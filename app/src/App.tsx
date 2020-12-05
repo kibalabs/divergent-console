@@ -1,15 +1,17 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { useFavicon, Router, Route } from '@kibalabs/core-react';
-import { buildTheme, KibaApp } from '@kibalabs/ui-react';
 
-import { EmptyPage } from './pages/emptyPage';
-import { DomainsPage } from './pages/domainsPage';
-import { DomainPage } from './pages/domainPage';
-import { NotFoundPage } from './pages/notFoundPage';
+import React from 'react';
+
+import { Route, Router, useFavicon } from '@kibalabs/core-react';
+import { buildTheme, KibaApp } from '@kibalabs/ui-react';
+import { Helmet } from 'react-helmet';
+
 import { CreateDomainPage } from './pages/createDomainPage';
 import { CreateLinkPage } from './pages/createLinkPage';
+import { DomainPage } from './pages/domainPage';
+import { DomainsPage } from './pages/domainsPage';
+import { EmptyPage } from './pages/emptyPage';
 import { LinkPage } from './pages/linkPage';
+import { NotFoundPage } from './pages/notFoundPage';
 
 const baseTheme = buildTheme();
 const theme = buildTheme({

@@ -1,6 +1,8 @@
+
 import React from 'react';
+
 import { KibaException } from '@kibalabs/core';
-import { Alignment, ContainingView, Direction, PaddingSize, Spacing, Stack, Text, Pill } from '@kibalabs/ui-react';
+import { Alignment, ContainingView, Direction, PaddingSize, Pill, Spacing, Stack, Text } from '@kibalabs/ui-react';
 
 import { Domain, DOMAIN_ID_MAP } from '../../model';
 import { asyncSleep } from '../../util';

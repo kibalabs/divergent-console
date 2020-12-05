@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from '@kibalabs/ui-react';
 
+import { Text } from '@kibalabs/ui-react';
 
 export interface ILinkPageProps {
   domainId: string;
