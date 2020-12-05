@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Text } from '@kibalabs/ui-react';
 
-
 export interface ICreateDomainPageProps {
 }
 
