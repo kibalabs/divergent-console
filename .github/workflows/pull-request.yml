@@ -16,4 +16,4 @@ jobs:
       - name: Lint
         run: npm run lint
       - name: Build docker image
-        run: docker build $DIRECTORY
+        run: docker build .
