@@ -22,7 +22,7 @@ jobs:
       run:
         working-directory: app
     steps:
-      - name: debug
-        run: echo $(pwd)
+      - name: Check out the repo
+        uses: actions/checkout@v2
       - name: Build docker image
         run: docker build .
