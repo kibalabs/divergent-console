@@ -1,3 +1,5 @@
 import React from 'react';
 
-export const EmptyPage = (): React.ReactElement => <div />;
+export const EmptyPage = (): React.ReactElement => {
+  return <div />;
+};

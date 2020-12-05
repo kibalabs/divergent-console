@@ -37,5 +37,6 @@ module.exports = {
     'import/extensions': 'off',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
+    'arrow-body-style': 'off',
   },
 };

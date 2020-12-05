@@ -2,14 +2,14 @@ name: Deploy
 on:
   push:
     branches: [ main ]
-defaults:
-  run:
-    working-directory: app
 env:
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/divergent-console
   DOCKER_TAG: latest
 jobs:
   deploy-app:
+  defaults:
+    run:
+      working-directory: app
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
