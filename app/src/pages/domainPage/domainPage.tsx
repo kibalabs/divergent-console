@@ -8,16 +8,17 @@ import { asyncSleep } from '../../util';
 export interface IDomainPageProps {
   domainId: string;
 }
+
 export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
   const [domain, setDomain] = React.useState<Domain | null>(null);
 
   React.useEffect((): void => {
-    loadDomain();
+    loadDomain(props.domainId);
   }, [props.domainId]);
 
-  const loadDomain = (): void => {
+  const loadDomain = (domainId: string): void => {
     asyncSleep(300).then((): void => {
-      setDomain(DOMAIN_ID_MAP[props.domainId]);
+      setDomain(DOMAIN_ID_MAP[domainId]);
     }).catch((error: KibaException): void => {
       // eslint-disable-next-line no-console
       console.error('error', error);
