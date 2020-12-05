@@ -49,7 +49,7 @@ export const App = (): React.ReactElement => {
 
   return (
     <KibaApp theme={theme}>
-      <>
+      <React.Fragment>
         <Helmet>
           <meta charSet='utf-8' />
           <title>Divergent Console</title>
@@ -63,7 +63,7 @@ export const App = (): React.ReactElement => {
           <Route path='/domains/:domainId/links/create' page={CreateLinkPage} />
           <Route default={true} page={NotFoundPage} />
         </Router>
-      </>
+      </React.Fragment>
     </KibaApp>
   );
 };
