@@ -22,5 +22,7 @@ jobs:
       run:
         working-directory: app
     steps:
+      - name: debug
+        run: echo $(pwd)
       - name: Build docker image
         run: docker build .
