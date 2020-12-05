@@ -5,7 +5,9 @@
   "scripts": {
     "build": "build-react-app --webpack-config-modifier ./config.webpack.js",
     "start": "build-react-app --webpack-config-modifier ./config.webpack.js --start",
-    "start-dev": "build-react-app --webpack-config-modifier ./config.webpack.js --start --dev"
+    "start-dev": "build-react-app --webpack-config-modifier ./config.webpack.js --start --dev",
+    "lint": "eslint . --ext .ts --ext .tsx",
+    "lint": "eslint . --ext .ts --ext .tsx"
   },
   "dependencies": {
     "@kibalabs/core": "0.4.4",
@@ -14,6 +16,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-helmet": "5.2.1",
+    "react-hot-loader": "^4.12.21",
     "styled-components": "5.2.0"
   },
   "devDependencies": {

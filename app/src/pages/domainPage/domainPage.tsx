@@ -19,20 +19,21 @@ export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
     asyncSleep(300).then((): void => {
       setDomain(DOMAIN_ID_MAP[props.domainId]);
     }).catch((error: KibaException): void => {
+      // eslint-disable-next-line no-console
       console.error('error', error);
       setDomain(null);
     });
-  }
+  };
 
   return (
     <ContainingView>
-      <Stack direction={Direction.Vertical} shouldAddGutters={true} paddingHorizontal={PaddingSize.Default}>
+      <Stack direction={Direction.Vertical} shouldAddGutters paddingHorizontal={PaddingSize.Default}>
         <Spacing variant={PaddingSize.Wide} />
         { !domain ? (
-            <Text>Loading...</Text>
+          <Text>Loading...</Text>
         ) : (
-          <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center} contentAlignment={Alignment.Start} isFullWidth={false}>
-            <Text variant='header3'>{domain.url}</Text>
+          <Stack direction={Direction.Horizontal} shouldAddGutters childAlignment={Alignment.Center} contentAlignment={Alignment.Start} isFullWidth={false}>
+            <Text variant="header3">{domain.url}</Text>
             <Pill variant={domain.isVerified ? 'success' : 'default'} text={domain.isVerified ? 'verified' : 'unverified'} />
           </Stack>
         )}
@@ -48,4 +49,4 @@ export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
       </Stack>
     </ContainingView>
   );
-}
+};

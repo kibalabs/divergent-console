@@ -32,4 +32,4 @@ export const HomeDomainCard = (props: IHomeDomainCardProps): React.ReactElement 
       </Stack>
     </Box>
   );
-}
+};

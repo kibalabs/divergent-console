@@ -1,4 +1,4 @@
 
-export const asyncSleep = (sleepTime: number): Promise<void> => {
-  return new Promise(resolve => setTimeout(resolve, sleepTime));
-}
+export const asyncSleep = (sleepTime: number): Promise<void> => (
+  new Promise((resolve) => setTimeout(resolve, sleepTime))
+);

@@ -14,7 +14,7 @@ import { LinkPage } from './pages/linkPage';
 const baseTheme = buildTheme();
 const theme = buildTheme({
   colors: {
-    'brandPrimary': '#178A80',
+    brandPrimary: '#178A80',
   },
   pills: {
     default: {
@@ -28,20 +28,20 @@ const theme = buildTheme({
           text: {
             'font-weight': 'normal',
             'font-size': 'smaller',
-          }
-        }
-      }
+          },
+        },
+      },
     },
     success: {
       normal: {
         default: {
           background: {
             'background-color': '$colors.successClear90',
-          }
-        }
-      }
-    }
-  }
+          },
+        },
+      },
+    },
+  },
 });
 
 export const App = (): React.ReactElement => {
@@ -49,21 +49,21 @@ export const App = (): React.ReactElement => {
 
   return (
     <KibaApp theme={theme}>
-      <React.Fragment>
+      <>
         <Helmet>
-          <meta charSet='utf-8' />
+          <meta charSet="utf-8" />
           <title>Divergent Console</title>
         </Helmet>
         <Router>
-          <Route path='/' page={EmptyPage} />
-          <Route path='/domains' page={DomainsPage} />
-          <Route path='/domains/create' page={CreateDomainPage} />
-          <Route path='/domains/:domainId' page={DomainPage} />
-          <Route path='/domains/:domainId/links/:linkId' page={LinkPage} />
-          <Route path='/domains/:domainId/links/create' page={CreateLinkPage} />
-          <Route default={true} page={NotFoundPage} />
+          <Route path="/" page={EmptyPage} />
+          <Route path="/domains" page={DomainsPage} />
+          <Route path="/domains/create" page={CreateDomainPage} />
+          <Route path="/domains/:domainId" page={DomainPage} />
+          <Route path="/domains/:domainId/links/:linkId" page={LinkPage} />
+          <Route path="/domains/:domainId/links/create" page={CreateLinkPage} />
+          <Route default page={NotFoundPage} />
         </Router>
-      </React.Fragment>
+      </>
     </KibaApp>
   );
-}
+};
