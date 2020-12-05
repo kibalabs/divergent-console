@@ -21,7 +21,9 @@ export const DomainsPage = (props: IDomainsPageProps): React.ReactElement => {
 
   const loadHomeDomains = (): void => {
     asyncSleep(300).then((): void => {
-      setHomeDomains(DOMAINS.map((domain: Domain): HomeDomain => new HomeDomain(domain, DOMAIN_ID_LINK_MAP[domain.domainId].slice(0, 3), DOMAIN_ID_LINK_MAP[domain.domainId].length)));
+      setHomeDomains(DOMAINS.map((domain: Domain): HomeDomain => {
+        return new HomeDomain(domain, DOMAIN_ID_LINK_MAP[domain.domainId].slice(0, 3), DOMAIN_ID_LINK_MAP[domain.domainId].length);
+      }));
     }).catch((error: KibaException): void => {
       // eslint-disable-next-line no-console
       console.error('error', error);
