@@ -7,7 +7,7 @@
     "start": "build-react-app --webpack-config-modifier ./config.webpack.js --start",
     "start-dev": "build-react-app --webpack-config-modifier ./config.webpack.js --start --dev",
     "lint": "eslint . --ext .ts --ext .tsx",
-    "lint": "eslint . --ext .ts --ext .tsx"
+    "lint:fix": "eslint --fix . --ext .ts --ext .tsx"
   },
   "dependencies": {
     "@kibalabs/core": "0.4.4",
