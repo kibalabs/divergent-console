@@ -7,7 +7,6 @@ defaults:
     working-directory: app
 jobs:
   test-app:
-    name: Test app
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -17,7 +16,6 @@ jobs:
       - name: Lint
         run: npm run lint
   build-app:
-    name: Build app
     needs: test-app
     runs-on: ubuntu-latest
     steps:
