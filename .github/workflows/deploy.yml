@@ -23,6 +23,7 @@ jobs:
         run: docker push $DOCKER_IMAGE:$DOCKER_TAG
   run-app:
     needs: deploy-app
+    name: Run app
     runs-on: ubuntu-latest
     env:
       RUNNABLE_DIRECTORY: deployments/${{ github.repository }}/${{ github.sha }}
