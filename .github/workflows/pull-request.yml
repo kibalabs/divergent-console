@@ -21,6 +21,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           start: npm start
+          working-directory: app
           # wait-on: 'http://localhost:3000'
 
   build-app:
