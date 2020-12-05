@@ -61,7 +61,7 @@ export const App = (): React.ReactElement => {
           <Route path="/domains/:domainId" page={DomainPage} />
           <Route path="/domains/:domainId/links/:linkId" page={LinkPage} />
           <Route path="/domains/:domainId/links/create" page={CreateLinkPage} />
-          <Route default page={NotFoundPage} />
+          <Route default={true} page={NotFoundPage} />
         </Router>
       </>
     </KibaApp>
