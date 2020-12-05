@@ -15,6 +15,14 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
+      # - name: Start server in the background
+      #   run: npm start &
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm start
+          # wait-on: 'http://localhost:3000'
+
   build-app:
     needs: test-app
     runs-on: ubuntu-latest
