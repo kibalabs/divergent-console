@@ -1,6 +1,8 @@
+
 import React from 'react';
+
 import { KibaException } from '@kibalabs/core';
-import { Alignment, ContainingView, Direction, PaddingSize, Spacing, Stack, Text, Pill } from '@kibalabs/ui-react';
+import { Alignment, ContainingView, Direction, PaddingSize, Pill, Spacing, Stack, Text } from '@kibalabs/ui-react';
 
 import { Domain, DOMAIN_ID_MAP } from '../../model';
 import { asyncSleep } from '../../util';
@@ -8,28 +10,30 @@ import { asyncSleep } from '../../util';
 export interface IDomainPageProps {
   domainId: string;
 }
+
 export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
   const [domain, setDomain] = React.useState<Domain | null>(null);
 
   React.useEffect((): void => {
-    loadDomain();
+    loadDomain(props.domainId);
   }, [props.domainId]);
 
-  const loadDomain = (): void => {
+  const loadDomain = (domainId: string): void => {
     asyncSleep(300).then((): void => {
-      setDomain(DOMAIN_ID_MAP[props.domainId]);
+      setDomain(DOMAIN_ID_MAP[domainId]);
     }).catch((error: KibaException): void => {
+      // eslint-disable-next-line no-console
       console.error('error', error);
       setDomain(null);
     });
-  }
+  };
 
   return (
     <ContainingView>
       <Stack direction={Direction.Vertical} shouldAddGutters={true} paddingHorizontal={PaddingSize.Default}>
         <Spacing variant={PaddingSize.Wide} />
         { !domain ? (
-            <Text>Loading...</Text>
+          <Text>Loading...</Text>
         ) : (
           <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center} contentAlignment={Alignment.Start} isFullWidth={false}>
             <Text variant='header3'>{domain.url}</Text>
@@ -48,4 +52,4 @@ export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
       </Stack>
     </ContainingView>
   );
-}
+};

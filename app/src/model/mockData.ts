@@ -1,6 +1,5 @@
-import { Domain } from "./domain";
-import { HomeDomain } from "./homeDomain";
-import { Link } from "./link";
+import { Domain } from './domain';
+import { Link } from './link';
 
 export const DOMAINS: Domain[] = [
   new Domain('1', 'johnsmith.com', true),
@@ -14,10 +13,10 @@ export const DOMAIN_ID_MAP: Record<string, Domain> = DOMAINS.reduce((accumulator
 }, {});
 
 export const DOMAIN_ID_LINK_MAP: Record<string, Link[]> = {
-  '1': [
+  1: [
     new Link('1', '1', '*', 'www.johnsmith.com', true),
   ],
-  '2': [
+  2: [
     new Link('2', '2', 'twitter', 'www.twitter.com/johnsmith', true),
     new Link('3', '2', 'facebook', 'www.facebook.com/johnsmith', false),
     new Link('4', '2', 'instagram', 'www.instagram.com/johnsmith', true),
@@ -31,8 +30,8 @@ export const DOMAIN_ID_LINK_MAP: Record<string, Link[]> = {
     new Link('12', '2', 'cool-link-12', 'www.coollinks.com/12', true),
     new Link('13', '2', 'cool-link-13', 'www.coollinks.com/13', true),
   ],
-  '3': [
+  3: [
     new Link('5', '2', 'cool', 'www.google.com', true),
     new Link('6', '3', 'lame', 'www.facebook.com', false),
   ],
-}
+};

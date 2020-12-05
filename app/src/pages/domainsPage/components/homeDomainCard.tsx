@@ -1,8 +1,9 @@
 import React from 'react';
-import { Direction, Stack, Text, Box, Button, Alignment, Pill } from '@kibalabs/ui-react';
 
-import { LinkRow } from './linkRow';
+import { Alignment, Box, Button, Direction, Pill, Stack, Text } from '@kibalabs/ui-react';
+
 import { HomeDomain, Link } from '../../../model';
+import { LinkRow } from './linkRow';
 
 interface IHomeDomainCardProps {
   homeDomain: HomeDomain;
@@ -32,4 +33,4 @@ export const HomeDomainCard = (props: IHomeDomainCardProps): React.ReactElement 
       </Stack>
     </Box>
   );
-}
+};

@@ -1,8 +1,10 @@
 import React from 'react';
+
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
 import { App } from './App';
+
 export default App;
 
 if (typeof document !== 'undefined') {
@@ -14,7 +16,7 @@ if (typeof document !== 'undefined') {
   const render = (Component: React.ComponentType) => (
     renderMethod(<AppContainer><Component /></AppContainer>, target)
   );
-  render(App)
+  render(App);
   if (module && module.hot) {
     module.hot.accept('./App', () => render(App));
   }

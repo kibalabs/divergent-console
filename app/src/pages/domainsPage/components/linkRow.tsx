@@ -1,5 +1,6 @@
 import React from 'react';
-import { Direction, Stack, Text, Alignment, KibaIcon } from '@kibalabs/ui-react';
+
+import { Alignment, Direction, KibaIcon, Stack, Text } from '@kibalabs/ui-react';
 
 import { Link } from '../../../model';
 
@@ -14,5 +15,5 @@ export const LinkRow = (props: ILinkRowProps): React.ReactElement => {
       <KibaIcon iconId='mui-arrow-right-alt' />
       <Text>{props.link.destination}</Text>
     </Stack>
-  )
-}
+  );
+};
