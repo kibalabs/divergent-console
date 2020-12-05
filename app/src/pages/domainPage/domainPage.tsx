@@ -33,7 +33,7 @@ export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
           <Text>Loading...</Text>
         ) : (
           <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center} contentAlignment={Alignment.Start} isFullWidth={false}>
-            <Text variant="header3">{domain.url}</Text>
+            <Text variant='header3'>{domain.url}</Text>
             <Pill variant={domain.isVerified ? 'success' : 'default'} text={domain.isVerified ? 'verified' : 'unverified'} />
           </Stack>
         )}

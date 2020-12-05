@@ -10,7 +10,7 @@ interface ILinkRowProps {
 export const LinkRow = (props: ILinkRowProps): React.ReactElement => (
   <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center} contentAlignment={Alignment.Start} isFullWidth={false}>
     <Text>{`/${props.link.sourcePath}`}</Text>
-    <KibaIcon iconId="mui-arrow-right-alt" />
+    <KibaIcon iconId='mui-arrow-right-alt' />
     <Text>{props.link.destination}</Text>
   </Stack>
 );
