@@ -20,6 +20,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
+          working-directory: app
           start: npm start
           wait-on: 'http://0.0.0.0:3000'
           config: baseUrl=https://localhost:3000
