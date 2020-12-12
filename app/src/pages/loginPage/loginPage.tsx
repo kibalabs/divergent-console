@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { useHistory } from '@kibalabs/core-react';
 import { KibaException } from '@kibalabs/core';
 import { Alignment, Box, Button, ContainingView, Direction, Form, InputType, Link, PaddingSize, SingleLineInput, Spacing, Stack, Text } from '@kibalabs/ui-react';
 
@@ -10,6 +11,7 @@ export interface ILoginPageProps {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
+  const history = useHistory();
   const [email, setEmail] = React.useState<string>(null);
   const [password, setPassword] = React.useState<string>(null);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
@@ -25,6 +27,10 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
     });
     setIsLoading(false);
   };
+
+  const onCreateAccountClicked = (): void => {
+    history.navigate('/register');
+  }
 
   return (
     <ContainingView>
@@ -45,7 +51,7 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
             <Spacing variant={PaddingSize.Wide} />
             <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
               <Stack.Item growthFactor={1} shrinkFactor={1} />
-              <Button buttonType='button' variant='secondary' text='Create account'/>
+              <Button buttonType='button' variant='secondary' text='Create account' onClicked=/>
               <Button buttonType='submit' variant='primary' text='Sign in'/>
             </Stack>
           </Form>

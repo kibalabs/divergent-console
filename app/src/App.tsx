@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 import { Route, Router, useFavicon } from '@kibalabs/core-react';
