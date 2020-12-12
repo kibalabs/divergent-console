@@ -15,13 +15,13 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
-      # - name: Start server in the background
-      #   run: npm start &
+      - name: Start server in the background
+        run: npm start &
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           working-directory: app
-          start: npm start
+          # start: npm start
           wait-on: 'http://0.0.0.0:3000'
           config: baseUrl=https://localhost:3000
 
