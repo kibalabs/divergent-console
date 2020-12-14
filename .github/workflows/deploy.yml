@@ -7,10 +7,10 @@ env:
   DOCKER_TAG: latest
 jobs:
   deploy-app:
-  defaults:
-    run:
-      working-directory: app
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
