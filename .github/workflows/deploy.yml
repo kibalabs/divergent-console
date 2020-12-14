@@ -7,9 +7,9 @@ env:
   DOCKER_TAG: latest
 jobs:
   deploy-app:
-  defaults:
-    run:
-      working-directory: app
+    defaults:
+      run:
+        working-directory: app
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
