@@ -51,22 +51,20 @@ export const App = (): React.ReactElement => {
 
   return (
     <KibaApp theme={theme}>
-      <React.Fragment>
-        <Helmet>
-          <meta charSet='utf-8' />
-          <title>Divergent Console</title>
-        </Helmet>
-        <Router>
-          <Route path='/' page={EmptyPage} />
-          <Route path='/login' page={LoginPage} />
-          <Route path='/domains' page={DomainsPage} />
-          <Route path='/domains/create' page={CreateDomainPage} />
-          <Route path='/domains/:domainId' page={DomainPage} />
-          <Route path='/domains/:domainId/links/:linkId' page={LinkPage} />
-          <Route path='/domains/:domainId/links/create' page={CreateLinkPage} />
-          <Route default={true} page={NotFoundPage} />
-        </Router>
-      </React.Fragment>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>Divergent Console</title>
+      </Helmet>
+      <Router>
+        <Route path='/' page={EmptyPage} />
+        <Route path='/login' page={LoginPage} />
+        <Route path='/domains' page={DomainsPage} />
+        <Route path='/domains/create' page={CreateDomainPage} />
+        <Route path='/domains/:domainId' page={DomainPage} />
+        <Route path='/domains/:domainId/links/:linkId' page={LinkPage} />
+        <Route path='/domains/:domainId/links/create' page={CreateLinkPage} />
+        <Route default={true} page={NotFoundPage} />
+      </Router>
     </KibaApp>
   );
 };

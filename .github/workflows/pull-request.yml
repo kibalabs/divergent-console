@@ -3,26 +3,40 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  test-app:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: app
-    steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
-      - name: Install dependencies
-        run: npm ci
-      - name: Lint
-        run: npm run lint
   build-app:
-    needs: test-app
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: app
+    env:
+      DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/divergent-console-build
+      DOCKER_TAG: ${{ github.sha }}
     steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
-      - name: Build docker image
-        run: docker build .
+    - name: Check out the repo
+      uses: actions/checkout@v2
+    - name: Login to GitHub Packages Docker Registry
+      run: echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u ${{ github.repository_owner }} --password-stdin
+    - name: Build docker image
+      run: docker build --tag $DOCKER_IMAGE:$DOCKER_TAG .
+    - name: Push to GitHub Packages
+      run: docker push $DOCKER_IMAGE:$DOCKER_TAG
+  lint-app:
+    needs: build-app
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/divergent-console-build
+      DOCKER_TAG: ${{ github.sha }}
+    steps:
+    - name: Login to GitHub Packages Docker Registry
+      run: echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u ${{ github.repository_owner }} --password-stdin
+    - name: Pull docker image
+      run: docker pull $DOCKER_IMAGE:$DOCKER_TAG
+    - name: Run linting
+      run: |
+        docker run --name lint $DOCKER_IMAGE:$DOCKER_TAG npm run lint -- --output-file lint-results.json
+        docker cp lint:/app/lint-results.json ./lint-results.json
+    - name: Annotate Code Linting Results
+      uses: kibalabs/eslint-annotate-action@master
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        report-json: lint-results.json
