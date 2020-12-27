@@ -22,7 +22,6 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
       // eslint-disable-next-line no-console
       console.log('email', email, 'password', password);
     }).catch((error: KibaException): void => {
-      // eslint-disable-next-line no-console
       console.error('error', error);
     });
     setIsLoading(false);
