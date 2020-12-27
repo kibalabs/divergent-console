@@ -25,6 +25,6 @@ jobs:
       uses: kibalabs/github-action-create-annotations@main
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        json-file-path: ./lint-results.json
+        json-file-path: ./app/lint-results.json
         check-name: lint-app
         fail-on-error: false
