@@ -8,7 +8,8 @@
     "start-dev": "build-react-app --webpack-config-modifier ./config.webpack.js --start --dev",
     "clean": "rm -rf ./node_modules ./package-lock.json ./dist",
     "lint": "lint",
-    "lint-fix": "lint --fix"
+    "lint-fix": "lint --fix",
+    "type-check": "type-check"
   },
   "dependencies": {
     "@kibalabs/core": "0.5.0",
