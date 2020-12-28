@@ -9,6 +9,7 @@ import { asyncSleep } from '../../util';
 export interface IRegistrationPageProps {
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElement => {
   const history = useHistory();
   const [firstName, setFirstName] = React.useState<string>(null);
@@ -21,12 +22,13 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
   const onRegisterClicked = (): void => {
     setIsLoading(true);
     asyncSleep(1000).then((): void => {
+      // eslint-disable-next-line no-console
       console.log('email', email, 'password', password);
     }).catch((error: KibaException): void => {
       console.error('error', error);
     });
     setIsLoading(false);
-    history.navigate('/domains')
+    history.navigate('/domains');
   };
 
   const onLoginClicked = (): void => {
@@ -62,5 +64,5 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
         </Box>
       </Stack>
     </ContainingView>
-  )
-}
+  );
+};

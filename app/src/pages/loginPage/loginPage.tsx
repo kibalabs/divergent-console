@@ -19,6 +19,7 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
   const onLoginClicked = (): void => {
     setIsLoading(true);
     asyncSleep(1000).then((): void => {
+      // eslint-disable-next-line no-console
       console.log('email', email, 'password', password);
     }).catch((error: KibaException): void => {
       console.error('error', error);

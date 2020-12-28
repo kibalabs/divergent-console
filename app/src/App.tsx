@@ -11,8 +11,8 @@ import { DomainsPage } from './pages/domainsPage';
 import { EmptyPage } from './pages/emptyPage';
 import { LinkPage } from './pages/linkPage';
 import { LoginPage } from './pages/loginPage';
-import { RegistrationPage } from './pages/registrationPage';
 import { NotFoundPage } from './pages/notFoundPage';
+import { RegistrationPage } from './pages/registrationPage';
 
 const baseTheme = buildTheme();
 const theme = buildTheme({
