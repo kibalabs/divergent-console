@@ -6,6 +6,14 @@ env:
   DOCKER_IMAGE: docker.pkg.github.com/${{ github.repository }}/divergent-console
   DOCKER_TAG: latest
 jobs:
+  test-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          working-directory: app
+          config: baseUrl=https://divergent-console.kibalabs.com/
   deploy-app:
     runs-on: ubuntu-latest
     defaults:

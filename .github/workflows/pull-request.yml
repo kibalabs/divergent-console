@@ -27,8 +27,3 @@ jobs:
         json-file-path: ./app/lint-results.json
         check-name: lint-app
         fail-on-error: false
-    - name: Cypress run
-      uses: cypress-io/github-action@v2
-      with:
-        working-directory: app
-        config: baseUrl=https://divergent-console.kibalabs.com/
