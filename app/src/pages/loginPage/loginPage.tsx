@@ -31,6 +31,7 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
     history.navigate('/register');
   };
 
+  const a = 1;
   return (
     <ContainingView>
       <Spacing variant={PaddingSize.Wide} />
