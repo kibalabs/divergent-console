@@ -3,6 +3,7 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
+
   build-app:
     runs-on: ubuntu-latest
     defaults:
@@ -26,3 +27,7 @@ jobs:
         json-file-path: ./app/lint-results.json
         check-name: lint-app
         fail-on-error: false
+    - name: Cypress run
+      uses: cypress-io/github-action@v2
+      with:
+        config: baseUrl=https://divergent-console.kibalabs.com/
