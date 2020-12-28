@@ -13,7 +13,7 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-import './commands'
+import './commands';
 
 // enable cypress-testing-library
 import '@testing-library/cypress/add-commands';
