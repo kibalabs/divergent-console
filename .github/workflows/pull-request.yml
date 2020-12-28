@@ -34,6 +34,6 @@ jobs:
       uses: kibalabs/github-action-create-annotations@main
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        json-file-path: ./typing-results.json
-        check-name: type-package
+        json-file-path: ./app/typing-results.json
+        check-name: type-app
         fail-on-error: false
