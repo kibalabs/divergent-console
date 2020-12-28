@@ -40,3 +40,14 @@ jobs:
             git clone --depth 1 $REPOSITORY_URL $RUNNABLE_DIRECTORY
             cd $RUNNABLE_DIRECTORY
             ./run.sh
+  test-app:
+    needs: deploy-app
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          config: baseUrl=https://divergent-console.kibalabs.com/
