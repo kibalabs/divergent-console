@@ -58,7 +58,6 @@ export const App = (): React.ReactElement => {
       <Router>
         <Route path='/' page={EmptyPage} />
         <Route path='/login' page={LoginPage} />
-        <Route path='/register' page={LoginPage} />
         <Route path='/domains' page={DomainsPage} />
         <Route path='/domains/create' page={CreateDomainPage} />
         <Route path='/domains/:domainId' page={DomainPage} />
