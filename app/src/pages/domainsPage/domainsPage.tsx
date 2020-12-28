@@ -26,7 +26,6 @@ export const DomainsPage = (props: IDomainsPageProps): React.ReactElement => {
         return new HomeDomain(domain, DOMAIN_ID_LINK_MAP[domain.domainId].slice(0, 3), DOMAIN_ID_LINK_MAP[domain.domainId].length);
       }));
     }).catch((error: KibaException): void => {
-      // eslint-disable-next-line no-console
       console.error('error', error);
       setHomeDomains(null);
     });

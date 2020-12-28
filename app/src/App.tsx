@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 import { Route, Router, useFavicon } from '@kibalabs/core-react';
@@ -11,6 +10,7 @@ import { DomainPage } from './pages/domainPage';
 import { DomainsPage } from './pages/domainsPage';
 import { EmptyPage } from './pages/emptyPage';
 import { LinkPage } from './pages/linkPage';
+import { LoginPage } from './pages/loginPage';
 import { NotFoundPage } from './pages/notFoundPage';
 
 const baseTheme = buildTheme();
@@ -51,21 +51,20 @@ export const App = (): React.ReactElement => {
 
   return (
     <KibaApp theme={theme}>
-      <React.Fragment>
-        <Helmet>
-          <meta charSet='utf-8' />
-          <title>Divergent Console</title>
-        </Helmet>
-        <Router>
-          <Route path='/' page={EmptyPage} />
-          <Route path='/domains' page={DomainsPage} />
-          <Route path='/domains/create' page={CreateDomainPage} />
-          <Route path='/domains/:domainId' page={DomainPage} />
-          <Route path='/domains/:domainId/links/:linkId' page={LinkPage} />
-          <Route path='/domains/:domainId/links/create' page={CreateLinkPage} />
-          <Route default={true} page={NotFoundPage} />
-        </Router>
-      </React.Fragment>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>Divergent Console</title>
+      </Helmet>
+      <Router>
+        <Route path='/' page={EmptyPage} />
+        <Route path='/login' page={LoginPage} />
+        <Route path='/domains' page={DomainsPage} />
+        <Route path='/domains/create' page={CreateDomainPage} />
+        <Route path='/domains/:domainId' page={DomainPage} />
+        <Route path='/domains/:domainId/links/:linkId' page={LinkPage} />
+        <Route path='/domains/:domainId/links/create' page={CreateLinkPage} />
+        <Route default={true} page={NotFoundPage} />
+      </Router>
     </KibaApp>
   );
 };
