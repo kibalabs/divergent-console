@@ -21,7 +21,6 @@ export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
     asyncSleep(300).then((): void => {
       setDomain(DOMAIN_ID_MAP[domainId]);
     }).catch((error: KibaException): void => {
-      // eslint-disable-next-line no-console
       console.error('error', error);
       setDomain(null);
     });
