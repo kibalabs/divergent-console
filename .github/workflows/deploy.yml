@@ -43,11 +43,9 @@ jobs:
   test-app:
     needs: deploy-app
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: app
     steps:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
+          working-directory: app
           config: baseUrl=https://divergent-console.kibalabs.com/
