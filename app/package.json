@@ -9,6 +9,7 @@
     "clean": "rm -rf ./node_modules ./package-lock.json ./dist",
     "lint": "lint --config-modifier ./eslintrc-modifier.js",
     "lint-fix": "lint --fix",
+    "type-check": "type-check",
     "test": "cypress open"
   },
   "dependencies": {
