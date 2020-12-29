@@ -12,11 +12,11 @@ export interface IRegistrationPageProps {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElement => {
   const history = useHistory();
-  const [firstName, setFirstName] = React.useState<string>(null);
-  const [lastName, setLastName] = React.useState<string>(null);
-  const [email, setEmail] = React.useState<string>(null);
-  const [password, setPassword] = React.useState<string>(null);
-  const [retypedPassword, setRetypedPassword] = React.useState<string>(null);
+  const [firstName, setFirstName] = React.useState<string | null>(null);
+  const [lastName, setLastName] = React.useState<string | null>(null);
+  const [email, setEmail] = React.useState<string | null>(null);
+  const [password, setPassword] = React.useState<string | null>(null);
+  const [retypedPassword, setRetypedPassword] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const onRegisterClicked = (): void => {
