@@ -12,6 +12,7 @@ import { EmptyPage } from './pages/emptyPage';
 import { LinkPage } from './pages/linkPage';
 import { LoginPage } from './pages/loginPage';
 import { NotFoundPage } from './pages/notFoundPage';
+import { RegistrationPage } from './pages/registrationPage';
 
 const baseTheme = buildTheme();
 const theme = buildTheme({
@@ -58,6 +59,7 @@ export const App = (): React.ReactElement => {
       <Router>
         <Route path='/' page={EmptyPage} />
         <Route path='/login' page={LoginPage} />
+        <Route path='/register' page={RegistrationPage} />
         <Route path='/domains' page={DomainsPage} />
         <Route path='/domains/create' page={CreateDomainPage} />
         <Route path='/domains/:domainId' page={DomainPage} />
