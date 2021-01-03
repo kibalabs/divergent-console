@@ -8,7 +8,7 @@
     "start-dev": "build-react-app --webpack-config-modifier ./config.webpack.js --start --dev",
     "clean": "rm -rf ./node_modules ./package-lock.json ./dist",
     "lint": "lint --config-modifier ./eslintrc-modifier.js",
-    "lint-fix": "lint --fix",
+    "lint-fix": "lint --config-modifier ./eslintrc-modifier.js --fix",
     "type-check": "type-check",
     "test": "cypress open"
   },
