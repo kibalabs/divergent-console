@@ -53,7 +53,6 @@ const theme = buildTheme({
     }
   }
 });
-console.log('theme', theme);
 
 export const App = (): React.ReactElement => {
   useFavicon('/assets/favicon.svg');
