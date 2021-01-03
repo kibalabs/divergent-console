@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { KibaException } from '@kibalabs/core';
-import { Alignment, ContainingView, Direction, PaddingSize, Pill, Spacing, Stack, Text, Box, Button } from '@kibalabs/ui-react';
+import { Alignment, Box, Button, ContainingView, Direction, PaddingSize, Pill, Spacing, Stack, Text } from '@kibalabs/ui-react';
 
+import { LinkRow } from '../../components/linkRow';
 import { Domain, DOMAIN_ID_LINK_MAP, DOMAIN_ID_MAP, Link } from '../../model';
 import { asyncSleep } from '../../util';
-import { LinkRow } from '../../components/linkRow';
 
 export interface IDomainPageProps {
   domainId: string;
@@ -38,8 +38,9 @@ export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
     });
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   const onCreateLinkClicked = (): void => {
-  }
+  };
 
   return (
     <ContainingView>
@@ -58,8 +59,8 @@ export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
         <Spacing variant={PaddingSize.Wide} />
         <Box variant='card' isFullWidth={false}>
           <Stack direction={Direction.Vertical} shouldAddGutters={true} defaultGutter={PaddingSize.Wide}>
-            {links && links.map((link: Link): React.ReactElement => (
-              <LinkRow link={link} />
+            {links && links.map((link: Link, index: number): React.ReactElement => (
+              <LinkRow key={index} link={link} />
             ))}
           </Stack>
         </Box>

@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Alignment, Box, Button, Direction, PaddingSize, Pill, Stack, Text } from '@kibalabs/ui-react';
 
-import { HomeDomain, Link } from '../../../model';
 import { LinkRow } from '../../../components/linkRow';
+import { HomeDomain, Link } from '../../../model';
 
 interface IHomeDomainCardProps {
   homeDomain: HomeDomain;
