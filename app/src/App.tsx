@@ -45,7 +45,15 @@ const theme = buildTheme({
       },
     },
   },
+  images: {
+    small: {
+      background: {
+        'border-radius': '0.1em',
+      }
+    }
+  }
 });
+console.log('theme', theme);
 
 export const App = (): React.ReactElement => {
   useFavicon('/assets/favicon.svg');

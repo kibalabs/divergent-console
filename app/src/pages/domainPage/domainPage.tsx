@@ -1,10 +1,11 @@
 import React from 'react';
 
 import { KibaException } from '@kibalabs/core';
-import { Alignment, ContainingView, Direction, PaddingSize, Pill, Spacing, Stack, Text } from '@kibalabs/ui-react';
+import { Alignment, ContainingView, Direction, PaddingSize, Pill, Spacing, Stack, Text, Box, Button } from '@kibalabs/ui-react';
 
-import { Domain, DOMAIN_ID_MAP } from '../../model';
+import { Domain, DOMAIN_ID_LINK_MAP, DOMAIN_ID_MAP, Link } from '../../model';
 import { asyncSleep } from '../../util';
+import { LinkRow } from '../../components/linkRow';
 
 export interface IDomainPageProps {
   domainId: string;
@@ -12,9 +13,11 @@ export interface IDomainPageProps {
 
 export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
   const [domain, setDomain] = React.useState<Domain | null>(null);
+  const [links, setLinks] = React.useState<Link[] | null>(null);
 
   React.useEffect((): void => {
     loadDomain(props.domainId);
+    loadDomainLinks(props.domainId);
   }, [props.domainId]);
 
   const loadDomain = (domainId: string): void => {
@@ -26,6 +29,18 @@ export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
     });
   };
 
+  const loadDomainLinks = (domainId: string): void => {
+    asyncSleep(300).then((): void => {
+      setLinks(DOMAIN_ID_LINK_MAP[domainId]);
+    }).catch((error: KibaException): void => {
+      console.error('error', error);
+      setDomain(null);
+    });
+  };
+
+  const onCreateLinkClicked = (): void => {
+  }
+
   return (
     <ContainingView>
       <Stack direction={Direction.Vertical} shouldAddGutters={true} paddingHorizontal={PaddingSize.Default}>
@@ -36,16 +51,18 @@ export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
           <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center} contentAlignment={Alignment.Start} isFullWidth={false}>
             <Text variant='header3'>{domain.url}</Text>
             <Pill variant={domain.isVerified ? 'success' : 'default'} text={domain.isVerified ? 'verified' : 'unverified'} />
+            <Stack.Item growthFactor={1} shrinkFactor={1} />
+            <Button variant='primary' text='Create Link' onClicked={onCreateLinkClicked} />
           </Stack>
         )}
         <Spacing variant={PaddingSize.Wide} />
-        {/* { domains.map((homeDomain: HomeDomain, index: number): React.ReactElement => (
-          <HomeDomainCard
-          key={index}
-          homeDomain={homeDomain}
-          onManageClicked={(): void => onManageClicked(homeDomain.domain.domainId)}
-          />
-        ))} */}
+        <Box variant='card' isFullWidth={false}>
+          <Stack direction={Direction.Vertical} shouldAddGutters={true} defaultGutter={PaddingSize.Wide}>
+            {links && links.map((link: Link): React.ReactElement => (
+              <LinkRow link={link} />
+            ))}
+          </Stack>
+        </Box>
         <Spacing variant={PaddingSize.Wide} />
       </Stack>
     </ContainingView>
