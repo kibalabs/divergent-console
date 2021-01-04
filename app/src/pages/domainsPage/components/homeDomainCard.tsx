@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Alignment, Box, Button, Direction, Pill, Stack, Text } from '@kibalabs/ui-react';
+import { Alignment, Box, Button, Direction, PaddingSize, Pill, Stack, Text } from '@kibalabs/ui-react';
 
+import { LinkRow } from '../../../components/linkRow';
 import { HomeDomain, Link } from '../../../model';
-import { LinkRow } from './linkRow';
 
 interface IHomeDomainCardProps {
   homeDomain: HomeDomain;
@@ -14,7 +14,7 @@ export const HomeDomainCard = (props: IHomeDomainCardProps): React.ReactElement 
   const leftoverLinkCount = props.homeDomain.totalLinkCount - props.homeDomain.topLinks.length;
   return (
     <Box variant='card' isFullWidth={false}>
-      <Stack direction={Direction.Vertical} shouldAddGutters={true}>
+      <Stack direction={Direction.Vertical} shouldAddGutters={true} defaultGutter={PaddingSize.Wide}>
         <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
           <Text variant='header3'>{props.homeDomain.domain.url}</Text>
           <Pill variant={props.homeDomain.domain.isVerified ? 'success' : 'default'} text={props.homeDomain.domain.isVerified ? 'verified' : 'unverified'} />

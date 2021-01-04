@@ -45,6 +45,13 @@ const theme = buildTheme({
       },
     },
   },
+  images: {
+    small: {
+      background: {
+        'border-radius': '0.1em',
+      },
+    },
+  },
 });
 
 export const App = (): React.ReactElement => {
