@@ -18,22 +18,27 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const onLoginClicked = async (): Promise<void> => {
-    setIsLoading(true);
+    let hasErrors = false;
     if (!email) {
       setEmailError('Enter email address');
+      hasErrors = true;
     }
     // Regex copied from https://emailregex.com/
     const emailRegex = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     if (email && !emailRegex.test(String(email).toLowerCase())) {
       setEmailError('Please enter a valid email address');
+      hasErrors = true;
     }
     if (!password) {
       setPasswordError('Enter a password');
+      hasErrors = true;
     }
     if (password && password.length < 8) {
       setPasswordError('Use 8 characters or more for your password');
+      hasErrors = true;
     }
-    if (emailError || passwordError) {
+    if (!hasErrors) {
+      setIsLoading(true);
       try {
         await asyncSleep(1000);
         // eslint-disable-next-line no-console
