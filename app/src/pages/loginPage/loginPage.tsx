@@ -13,18 +13,50 @@ export interface ILoginPageProps {
 export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
   const history = useHistory();
   const [email, setEmail] = React.useState<string | null>(null);
+  const [emailError, setEmailError] = React.useState<string | null>(null);
   const [password, setPassword] = React.useState<string | null>(null);
+  const [passwordError, setPasswordError] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
-  const onLoginClicked = (): void => {
+  const onLoginClicked = async (): Promise<void> => {
     setIsLoading(true);
-    asyncSleep(1000).then((): void => {
-      // eslint-disable-next-line no-console
-      console.log('email', email, 'password', password);
-    }).catch((error: KibaException): void => {
-      console.error('error', error);
-    });
+    let hasErrors = false;
+    if (!email) {
+      setEmailError('Enter email address');
+      hasErrors = true;
+    };
+    const emailRegex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    if (email && !emailRegex.test(String(email).toLowerCase())) {
+      setEmailError('Please enter a valid email address');
+      hasErrors = true;
+    };
+    if (!password) {
+      setPasswordError('Enter a password');
+      hasErrors = true;
+    };
+    if (!hasErrors) {
+      try {
+        await asyncSleep(1000);
+        console.log('email', email.toLowerCase(), 'password', password);
+      } catch (error) {
+        console.error('error', error);
+      };
+    }
     setIsLoading(false);
+  };
+
+  const onEmailTyped = (email: string): void => {
+    if (emailError) {
+      setEmailError(null);
+    };
+    setEmail(email);
+  };
+
+  const onPasswordTyped = (password: string): void => {
+    if (passwordError) {
+      setPasswordError(null);
+    };
+    setPassword(password);
   };
 
   const onCreateAccountClicked = (): void => {
@@ -39,9 +71,9 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
             <Stack isFullHeight={true} isFullWidth={true} shouldAddGutters={true} direction={Direction.Vertical} childAlignment={Alignment.Center}>
               <Text variant='header3'>Welcome Back :)</Text>
               <Spacing variant={PaddingSize.Wide} />
-              <SingleLineInput placeholderText='Email Address' inputType={InputType.Email} value={email} onValueChanged={setEmail}/>
+              <SingleLineInput inputWrapperVariant={emailError ? 'error' : 'success'} messageText={emailError} placeholderText='Email Address' inputType={InputType.Email} value={email} onValueChanged={onEmailTyped}/>
               <Spacing variant={PaddingSize.Wide} />
-              <SingleLineInput placeholderText='Password' inputType={InputType.Password} value={password} onValueChanged={setPassword}/>
+              <SingleLineInput inputWrapperVariant={passwordError ? 'error' : 'success'} messageText={passwordError} placeholderText='Password' inputType={InputType.Password} value={password} onValueChanged={onPasswordTyped}/>
               <Spacing variant={PaddingSize.Narrow} />
               <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
                 <Stack.Item growthFactor={1} shrinkFactor={1} />
