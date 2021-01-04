@@ -42,7 +42,7 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
       try {
         await asyncSleep(1000);
         // eslint-disable-next-line no-console
-        console.log('email', email.toLowerCase(), 'password', password);
+        console.log('email', email && email.toLowerCase(), 'password', password);
       } catch (error) {
         console.error('error', error);
       }
@@ -76,9 +76,9 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
             <Stack isFullHeight={true} isFullWidth={true} shouldAddGutters={true} direction={Direction.Vertical} childAlignment={Alignment.Center}>
               <Text variant='header3'>Welcome Back :)</Text>
               <Spacing variant={PaddingSize.Wide} />
-              <SingleLineInput inputWrapperVariant={emailError ? 'error' : 'success'} messageText={emailError} placeholderText='Email Address' inputType={InputType.Email} value={email} onValueChanged={onEmailTyped}/>
+              <SingleLineInput inputWrapperVariant={emailError ? 'error' : 'success'} messageText={emailError || undefined} placeholderText='Email Address' inputType={InputType.Email} value={email} onValueChanged={onEmailTyped}/>
               <Spacing variant={PaddingSize.Wide} />
-              <SingleLineInput inputWrapperVariant={passwordError ? 'error' : 'success'} messageText={passwordError} placeholderText='Password' inputType={InputType.Password} value={password} onValueChanged={onPasswordTyped}/>
+              <SingleLineInput inputWrapperVariant={passwordError ? 'error' : 'success'} messageText={passwordError || undefined} placeholderText='Password' inputType={InputType.Password} value={password} onValueChanged={onPasswordTyped}/>
               <Spacing variant={PaddingSize.Narrow} />
               <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
                 <Stack.Item growthFactor={1} shrinkFactor={1} />
