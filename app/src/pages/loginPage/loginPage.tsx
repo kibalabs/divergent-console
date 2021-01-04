@@ -20,21 +20,20 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
 
   const onLoginClicked = async (): Promise<void> => {
     setIsLoading(true);
-    let hasErrors = false;
     if (!email) {
       setEmailError('Enter email address');
-      hasErrors = true;
     };
     const emailRegex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     if (email && !emailRegex.test(String(email).toLowerCase())) {
       setEmailError('Please enter a valid email address');
-      hasErrors = true;
     };
     if (!password) {
       setPasswordError('Enter a password');
-      hasErrors = true;
     };
-    if (!hasErrors) {
+    if (password && password.length < 8) {
+      setPasswordError('Use 8 characters or more for your password');
+    }
+    if (emailError || passwordError) {
       try {
         await asyncSleep(1000);
         console.log('email', email.toLowerCase(), 'password', password);
