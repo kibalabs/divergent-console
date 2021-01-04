@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { KibaException } from '@kibalabs/core';
 import { useHistory } from '@kibalabs/core-react';
 import { Alignment, Box, Button, ContainingView, Direction, Form, InputType, Link, PaddingSize, PaddingView, SingleLineInput, Spacing, Stack, Text } from '@kibalabs/ui-react';
 
@@ -22,40 +21,41 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
     setIsLoading(true);
     if (!email) {
       setEmailError('Enter email address');
-    };
-    const emailRegex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    }
+    const emailRegex = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     if (email && !emailRegex.test(String(email).toLowerCase())) {
       setEmailError('Please enter a valid email address');
-    };
+    }
     if (!password) {
       setPasswordError('Enter a password');
-    };
+    }
     if (password && password.length < 8) {
       setPasswordError('Use 8 characters or more for your password');
     }
     if (emailError || passwordError) {
       try {
         await asyncSleep(1000);
+        // eslint-disable-next-line no-console
         console.log('email', email.toLowerCase(), 'password', password);
       } catch (error) {
         console.error('error', error);
-      };
+      }
     }
     setIsLoading(false);
   };
 
-  const onEmailTyped = (email: string): void => {
+  const onEmailTyped = (typedEmail: string): void => {
     if (emailError) {
       setEmailError(null);
-    };
-    setEmail(email);
+    }
+    setEmail(typedEmail);
   };
 
-  const onPasswordTyped = (password: string): void => {
+  const onPasswordTyped = (typedPassword: string): void => {
     if (passwordError) {
       setPasswordError(null);
-    };
-    setPassword(password);
+    }
+    setPassword(typedPassword);
   };
 
   const onCreateAccountClicked = (): void => {
