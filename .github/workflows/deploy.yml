@@ -44,6 +44,8 @@ jobs:
     needs: deploy-app
     runs-on: ubuntu-latest
     steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
