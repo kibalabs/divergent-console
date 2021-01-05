@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { KibaException } from '@kibalabs/core';
 import { useHistory } from '@kibalabs/core-react';
 import { Alignment, Box, Button, ContainingView, Direction, Form, InputType, PaddingSize, SingleLineInput, Spacing, Stack, Text } from '@kibalabs/ui-react';
 
@@ -19,14 +18,15 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
   const [retypedPassword, setRetypedPassword] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
-  const onRegisterClicked = (): void => {
+  const onRegisterClicked = async (): Promise<void> => {
     setIsLoading(true);
-    asyncSleep(1000).then((): void => {
+    try {
+      asyncSleep(1000);
       // eslint-disable-next-line no-console
       console.log('email', email, 'password', password);
-    }).catch((error: KibaException): void => {
+    } catch (error) {
       console.error('error', error);
-    });
+    }
     setIsLoading(false);
     history.navigate('/domains');
   };
