@@ -3,7 +3,7 @@ import React from 'react';
 import { useHistory } from '@kibalabs/core-react';
 import { Alignment, Box, Button, ContainingView, Direction, Form, InputType, PaddingSize, SingleLineInput, Spacing, Stack, Text } from '@kibalabs/ui-react';
 
-import { asyncSleep } from '../../util';
+import { asyncSleep, isEmailValid } from '../../util';
 
 export interface IRegistrationPageProps {
 }
@@ -12,23 +12,100 @@ export interface IRegistrationPageProps {
 export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElement => {
   const history = useHistory();
   const [firstName, setFirstName] = React.useState<string | null>(null);
+  const [firstNameError, setFirstNameError] = React.useState<string | null>(null);
   const [lastName, setLastName] = React.useState<string | null>(null);
+  const [lastNameError, setLastNameError] = React.useState<string | null>(null);
   const [email, setEmail] = React.useState<string | null>(null);
+  const [emailError, setEmailError] = React.useState<string | null>(null);
   const [password, setPassword] = React.useState<string | null>(null);
-  const [retypedPassword, setRetypedPassword] = React.useState<string | null>(null);
+  const [passwordError, setPasswordError] = React.useState<string | null>(null);
+  const [confirmPassword, setConfirmPassword] = React.useState<string | null>(null);
+  const [confirmPasswordError, setConfirmPasswordError] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const onRegisterClicked = async (): Promise<void> => {
-    setIsLoading(true);
-    try {
-      asyncSleep(1000);
-      // eslint-disable-next-line no-console
-      console.log('email', email, 'password', password);
-    } catch (error) {
-      console.error('error', error);
+    let hasErrors = false;
+    let hasPasswordError = false;
+    if (!firstName) {
+      setFirstNameError('Enter first name');
+      hasErrors = true;
+    }
+    if (!lastName) {
+      setLastNameError('Enter first name');
+      hasErrors = true;
+    }
+    if (!email) {
+      setEmailError('Enter an email address');
+      hasErrors = true;
+    }
+    if (email && !isEmailValid(email)) {
+      setEmailError('Enter a valid email address');
+      hasErrors = true;
+    }
+    if (!hasPasswordError && !password) {
+      setPasswordError('Enter a password');
+      hasPasswordError = true;
+    }
+    if (!hasPasswordError && password && password.length < 8) {
+      setPasswordError('Use 8 or more characters');
+      hasPasswordError = true;
+    }
+    if (!hasPasswordError && password && !confirmPassword) {
+      setConfirmPasswordError('Confirm your password');
+      hasPasswordError = true;
+    }
+    if (!hasPasswordError && password && confirmPassword && (password !== confirmPassword)) {
+      setPasswordError('Passwords didn\'t match. Try again');
+      hasPasswordError = true;
+    }
+    if (!hasErrors && !hasPasswordError) {
+      setIsLoading(true);
+      try {
+        asyncSleep(3000);
+        // eslint-disable-next-line no-console
+        console.log('email', email && email.toLowerCase(), 'password', password);
+        history.navigate('/domains');
+      } catch (error) {
+        // TODO(rikhil): error to be rendered when registration fails
+        console.error('error', error);
+      }
     }
     setIsLoading(false);
-    history.navigate('/domains');
+  };
+
+  const onFirstNameTyped = (typedFirstName: string): void => {
+    if (firstNameError) {
+      setFirstNameError(null);
+    }
+    setFirstName(typedFirstName);
+  };
+
+  const onLastNameTyped = (typedLastName: string): void => {
+    if (lastNameError) {
+      setLastNameError(null);
+    }
+    setLastName(typedLastName);
+  };
+
+  const onEmailTyped = (typedEmail: string): void => {
+    if (emailError) {
+      setEmailError(null);
+    }
+    setEmail(typedEmail);
+  };
+
+  const onPasswordTyped = (typedPassword: string): void => {
+    if (passwordError) {
+      setPasswordError(null);
+    }
+    setPassword(typedPassword);
+  };
+
+  const onConfirmPasswordTyped = (typedConfirmPassword: string): void => {
+    if (passwordError) {
+      setConfirmPasswordError(null);
+    }
+    setConfirmPassword(typedConfirmPassword);
   };
 
   const onLoginClicked = (): void => {
@@ -44,15 +121,50 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
             <Text variant='header3'>Create account</Text>
             <Spacing variant={PaddingSize.Wide} />
             <Stack isFullHeight={true} isFullWidth={true} shouldAddGutters={true} direction={Direction.Horizontal} childAlignment={Alignment.Center}>
-              <SingleLineInput placeholderText='First name' inputType={InputType.Text} value={firstName} onValueChanged={setFirstName}/>
-              <SingleLineInput placeholderText='Last name' inputType={InputType.Text} value={lastName} onValueChanged={setLastName}/>
+              <SingleLineInput
+                inputWrapperVariant={firstNameError ? 'error' : undefined}
+                messageText={firstNameError || undefined}
+                placeholderText='First name'
+                inputType={InputType.Text}
+                value={firstName}
+                onValueChanged={onFirstNameTyped}
+              />
+              <SingleLineInput
+                inputWrapperVariant={lastNameError ? 'error' : undefined}
+                messageText={lastNameError || undefined}
+                placeholderText='Last name'
+                inputType={InputType.Text}
+                value={lastName}
+                onValueChanged={onLastNameTyped}
+              />
             </Stack>
             <Spacing variant={PaddingSize.Wide} />
-            <SingleLineInput placeholderText='Email Address' inputType={InputType.Email} value={email} onValueChanged={setEmail}/>
+            <SingleLineInput
+              inputWrapperVariant={emailError ? 'error' : undefined}
+              messageText={emailError || undefined}
+              placeholderText='Email Address'
+              inputType={InputType.Email}
+              value={email}
+              onValueChanged={onEmailTyped}
+            />
             <Spacing variant={PaddingSize.Wide} />
             <Stack isFullHeight={true} isFullWidth={true} shouldAddGutters={true} direction={Direction.Horizontal} childAlignment={Alignment.Center}>
-              <SingleLineInput placeholderText='Password' inputType={InputType.Password} value={password} onValueChanged={setPassword}/>
-              <SingleLineInput placeholderText='Confirm' inputType={InputType.Password} value={retypedPassword} onValueChanged={setRetypedPassword}/>
+              <SingleLineInput
+                inputWrapperVariant={passwordError ? 'error' : undefined}
+                messageText={passwordError || undefined}
+                placeholderText='Password'
+                inputType={InputType.Password}
+                value={password}
+                onValueChanged={onPasswordTyped}
+              />
+              <SingleLineInput
+                inputWrapperVariant={confirmPasswordError ? 'error' : undefined}
+                messageText={confirmPasswordError || undefined}
+                placeholderText='Confirm'
+                inputType={InputType.Password}
+                value={confirmPassword}
+                onValueChanged={onConfirmPasswordTyped}
+              />
             </Stack>
             <Spacing variant={PaddingSize.Wide} />
             <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
