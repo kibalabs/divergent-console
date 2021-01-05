@@ -3,7 +3,7 @@ import React from 'react';
 import { useHistory } from '@kibalabs/core-react';
 import { Alignment, Box, Button, ContainingView, Direction, Form, InputType, Link, PaddingSize, PaddingView, SingleLineInput, Spacing, Stack, Text } from '@kibalabs/ui-react';
 
-import { asyncSleep } from '../../util';
+import { asyncSleep, isEmailValid } from '../../util';
 
 export interface ILoginPageProps {
 }
@@ -23,9 +23,7 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
       setEmailError('Enter an email address');
       hasErrors = true;
     }
-    // Regex copied from https://emailregex.com/
-    const emailRegex = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-    if (email && !emailRegex.test(String(email).toLowerCase())) {
+    if (email && !isEmailValid(email)) {
       setEmailError('Enter a valid email address');
       hasErrors = true;
     }
@@ -76,9 +74,23 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
             <Stack isFullHeight={true} isFullWidth={true} shouldAddGutters={true} direction={Direction.Vertical} childAlignment={Alignment.Center}>
               <Text variant='header3'>Welcome Back :)</Text>
               <Spacing variant={PaddingSize.Wide} />
-              <SingleLineInput inputWrapperVariant={emailError ? 'error' : 'success'} messageText={emailError || undefined} placeholderText='Email Address' inputType={InputType.Email} value={email} onValueChanged={onEmailTyped}/>
+              <SingleLineInput
+                inputWrapperVariant={emailError ? 'error' : undefined}
+                messageText={emailError || undefined}
+                placeholderText='Email Address'
+                inputType={InputType.Email}
+                value={email}
+                onValueChanged={onEmailTyped}
+              />
               <Spacing variant={PaddingSize.Wide} />
-              <SingleLineInput inputWrapperVariant={passwordError ? 'error' : 'success'} messageText={passwordError || undefined} placeholderText='Password' inputType={InputType.Password} value={password} onValueChanged={onPasswordTyped}/>
+              <SingleLineInput
+                inputWrapperVariant={passwordError ? 'error' : undefined}
+                messageText={passwordError || undefined}
+                placeholderText='Password'
+                inputType={InputType.Password}
+                value={password}
+                onValueChanged={onPasswordTyped}
+              />
               <Spacing variant={PaddingSize.Narrow} />
               <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
                 <Stack.Item growthFactor={1} shrinkFactor={1} />
