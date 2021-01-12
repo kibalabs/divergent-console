@@ -19,28 +19,28 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
   const [emailError, setEmailError] = React.useState<string | null>(null);
   const [password, setPassword] = React.useState<string | null>(null);
   const [passwordError, setPasswordError] = React.useState<string | null>(null);
-  const [confirmPassword, setConfirmPassword] = React.useState<string | null>(null);
-  const [confirmPasswordError, setConfirmPasswordError] = React.useState<string | null>(null);
+  const [confirmedPassword, setConfirmedPassword] = React.useState<string | null>(null);
+  const [confirmedPasswordError, setConfirmedPasswordError] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const onRegisterClicked = async (): Promise<void> => {
-    let hasErrors = false;
+    let hasNonPasswordError = false;
     let hasPasswordError = false;
     if (!firstName) {
       setFirstNameError('Enter first name');
-      hasErrors = true;
+      hasNonPasswordError = true;
     }
     if (!lastName) {
       setLastNameError('Enter first name');
-      hasErrors = true;
+      hasNonPasswordError = true;
     }
     if (!email) {
       setEmailError('Enter an email address');
-      hasErrors = true;
+      hasNonPasswordError = true;
     }
     if (email && !isEmailValid(email)) {
       setEmailError('Enter a valid email address');
-      hasErrors = true;
+      hasNonPasswordError = true;
     }
     if (!hasPasswordError && !password) {
       setPasswordError('Enter a password');
@@ -50,15 +50,15 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
       setPasswordError('Use 8 or more characters');
       hasPasswordError = true;
     }
-    if (!hasPasswordError && password && !confirmPassword) {
-      setConfirmPasswordError('Confirm your password');
+    if (!hasPasswordError && password && !confirmedPassword) {
+      setConfirmedPasswordError('Confirm your password');
       hasPasswordError = true;
     }
-    if (!hasPasswordError && password && confirmPassword && (password !== confirmPassword)) {
+    if (!hasPasswordError && password && confirmedPassword && (password !== confirmedPassword)) {
       setPasswordError('Passwords didn\'t match. Try again');
       hasPasswordError = true;
     }
-    if (!hasErrors && !hasPasswordError) {
+    if (!hasNonPasswordError && !hasPasswordError) {
       setIsLoading(true);
       try {
         asyncSleep(3000);
@@ -101,11 +101,11 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
     setPassword(typedPassword);
   };
 
-  const onConfirmPasswordTyped = (typedConfirmPassword: string): void => {
+  const onConfirmedPasswordTyped = (typedConfirmedPassword: string): void => {
     if (passwordError) {
-      setConfirmPasswordError(null);
+      setConfirmedPasswordError(null);
     }
-    setConfirmPassword(typedConfirmPassword);
+    setConfirmedPassword(typedConfirmedPassword);
   };
 
   const onLoginClicked = (): void => {
@@ -158,12 +158,12 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
                 onValueChanged={onPasswordTyped}
               />
               <SingleLineInput
-                inputWrapperVariant={confirmPasswordError ? 'error' : undefined}
-                messageText={confirmPasswordError || undefined}
+                inputWrapperVariant={confirmedPasswordError ? 'error' : undefined}
+                messageText={confirmedPasswordError || undefined}
                 placeholderText='Confirm'
                 inputType={InputType.Password}
-                value={confirmPassword}
-                onValueChanged={onConfirmPasswordTyped}
+                value={confirmedPassword}
+                onValueChanged={onConfirmedPasswordTyped}
               />
             </Stack>
             <Spacing variant={PaddingSize.Wide} />
