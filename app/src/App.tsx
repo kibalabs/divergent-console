@@ -9,6 +9,7 @@ import { CreateLinkPage } from './pages/createLinkPage';
 import { DomainPage } from './pages/domainPage';
 import { DomainsPage } from './pages/domainsPage';
 import { EmptyPage } from './pages/emptyPage';
+import { ForgotPasswordPage } from './pages/forgotPasswordPage';
 import { LinkPage } from './pages/linkPage';
 import { LoginPage } from './pages/loginPage';
 import { NotFoundPage } from './pages/notFoundPage';
@@ -67,6 +68,7 @@ export const App = (): React.ReactElement => {
         <Route path='/' page={EmptyPage} />
         <Route path='/login' page={LoginPage} />
         <Route path='/register' page={RegistrationPage} />
+        <Route path='/forgot-password' page={ForgotPasswordPage} />
         <Route path='/domains' page={DomainsPage} />
         <Route path='/domains/create' page={CreateDomainPage} />
         <Route path='/domains/:domainId' page={DomainPage} />
