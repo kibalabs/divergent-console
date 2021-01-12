@@ -32,7 +32,7 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
       hasErrors = true;
     }
     if (password && password.length < 8) {
-      setPasswordError('Use 8 or more characters');
+      setPasswordError('Wrong password. Try again or click Forgot password to reset it');
       hasErrors = true;
     }
     if (!hasErrors) {
@@ -41,7 +41,9 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
         await asyncSleep(1000);
         // eslint-disable-next-line no-console
         console.log('email', email && email.toLowerCase(), 'password', password);
+        history.navigate('/domains');
       } catch (error) {
+        // TODO(rikhil): error to be rendered when login fails
         console.error('error', error);
       }
     }
