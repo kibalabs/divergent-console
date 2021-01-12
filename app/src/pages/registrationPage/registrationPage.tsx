@@ -108,7 +108,7 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
     setConfirmedPassword(typedConfirmedPassword);
   };
 
-  const onSignInInsteadClicked = (): void => {
+  const onNavigateToLoginClicked = (): void => {
     history.navigate('/login');
   };
 
@@ -169,7 +169,7 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
             <Spacing variant={PaddingSize.Wide} />
             <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
               <Stack.Item growthFactor={1} shrinkFactor={1} />
-              <Button buttonType='button' variant='secondary' text='Sign in instead' onClicked={onSignInInsteadClicked}/>
+              <Button buttonType='button' variant='secondary' text='Sign in instead' onClicked={onNavigateToLoginClicked}/>
               <Button buttonType='submit' variant='primary' text='Sign up'/>
             </Stack>
           </Form>
