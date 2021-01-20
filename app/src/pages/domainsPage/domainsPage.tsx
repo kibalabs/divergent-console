@@ -2,7 +2,7 @@ import React from 'react';
 
 import { KibaException } from '@kibalabs/core';
 import { useHistory } from '@kibalabs/core-react';
-import { ContainingView, Direction, PaddingSize, Spacing, Stack, Text } from '@kibalabs/ui-react';
+import { Alignment, Button, ContainingView, Direction, PaddingSize, Spacing, Stack, Text } from '@kibalabs/ui-react';
 
 import { Domain, DOMAIN_ID_LINK_MAP, DOMAINS, HomeDomain } from '../../model';
 import { asyncSleep } from '../../util';
@@ -35,11 +35,19 @@ export const DomainsPage = (props: IDomainsPageProps): React.ReactElement => {
     history.navigate(`/domains/${domainId}`);
   };
 
+  const onCreateDomainClicked = (): void => {
+    history.navigate('/domains/create');
+  };
+
   return (
     <ContainingView>
       <Stack direction={Direction.Vertical} shouldAddGutters={true} paddingHorizontal={PaddingSize.Default}>
         <Spacing variant={PaddingSize.Wide} />
-        <Text variant='header1'>Your Domains</Text>
+        <Stack direction={Direction.Horizontal} childAlignment={Alignment.Center}>
+          <Text variant='header1'>Your Domains</Text>
+          <Stack.Item growthFactor={1} shrinkFactor={1} />
+          <Button variant='primary' text='Create Domain' onClicked={onCreateDomainClicked} />
+        </Stack>
         <Spacing variant={PaddingSize.Wide} />
         { !homeDomains ? (
           <Text>Loading...</Text>

@@ -13,9 +13,9 @@
     "test": "cypress open"
   },
   "dependencies": {
-    "@kibalabs/core": "0.5.1",
-    "@kibalabs/core-react": "0.5.4",
-    "@kibalabs/ui-react": "0.8.1",
+    "@kibalabs/core": "0.5.3",
+    "@kibalabs/core-react": "0.5.5",
+    "@kibalabs/ui-react": "0.8.3",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-helmet": "6.1.0",
@@ -23,14 +23,14 @@
     "styled-components": "5.2.1"
   },
   "devDependencies": {
-    "@kibalabs/build": "0.6.3",
+    "@kibalabs/build": "0.6.4",
     "@testing-library/cypress": "^7.0.3",
     "@types/node": "14.14.19",
     "@types/react": "17.0.0",
     "@types/react-dom": "17.0.0",
     "@types/react-helmet": "6.1.0",
     "@types/styled-components": "5.1.7",
-    "cypress": "^6.2.0",
+    "cypress": "^6.3.0",
     "eslint-plugin-cypress": "^2.11.2"
   }
 }

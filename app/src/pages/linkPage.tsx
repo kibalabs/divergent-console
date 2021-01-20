@@ -9,6 +9,12 @@ export interface ILinkPageProps {
 
 export const LinkPage = (props: ILinkPageProps): React.ReactElement => {
   return (
-    <Text>Link #{props.linkId} inside Domain #{props.domainId}</Text>
+    <Text>
+Link #
+      {props.linkId}
+      {' '}
+inside Domain #
+      {props.domainId}
+    </Text>
   );
 };

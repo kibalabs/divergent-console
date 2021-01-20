@@ -4,8 +4,8 @@ import { Route, Router, useFavicon } from '@kibalabs/core-react';
 import { buildTheme, KibaApp } from '@kibalabs/ui-react';
 import { Helmet } from 'react-helmet';
 
-import { CreateDomainPage } from './pages/createDomainPage';
 import { CreateLinkPage } from './pages/createLinkPage';
+import { DomainCreatePage } from './pages/domainCreatePage';
 import { DomainPage } from './pages/domainPage';
 import { DomainsPage } from './pages/domainsPage';
 import { EmptyPage } from './pages/emptyPage';
@@ -70,7 +70,7 @@ export const App = (): React.ReactElement => {
         <Route path='/register' page={RegistrationPage} />
         <Route path='/forgot-password' page={ForgotPasswordPage} />
         <Route path='/domains' page={DomainsPage} />
-        <Route path='/domains/create' page={CreateDomainPage} />
+        <Route path='/domains/create' page={DomainCreatePage} />
         <Route path='/domains/:domainId' page={DomainPage} />
         <Route path='/domains/:domainId/links/:linkId' page={LinkPage} />
         <Route path='/domains/:domainId/links/create' page={CreateLinkPage} />
