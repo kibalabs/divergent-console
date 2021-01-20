@@ -27,7 +27,7 @@ export const DomainCreatePage = (props: IDomainCreatePageProps): React.ReactElem
         await asyncSleep(1000);
         history.navigate('/domains');
       } catch (error) {
-        // TODO(krishan711): error to be rendered when login fails
+        // TODO(krishan711): error to be rendered when domain creation fails
         console.error('error', error);
       }
     }
