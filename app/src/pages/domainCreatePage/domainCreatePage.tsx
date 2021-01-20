@@ -38,7 +38,7 @@ export const DomainCreatePage = (props: IDomainCreatePageProps): React.ReactElem
     if (urlError) {
       setUrlError(null);
     }
-    setUrl(typedEmail);
+    setUrl(typedUrl);
   };
 
   return (
