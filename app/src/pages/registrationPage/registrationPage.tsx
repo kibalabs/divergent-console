@@ -169,8 +169,8 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
                 <Spacing variant={PaddingSize.Wide} />
                 <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
                   <Stack.Item growthFactor={1} shrinkFactor={1} />
-                  <Button buttonType='button' variant='secondary' text='Sign in instead' onClicked={onNavigateToLoginClicked}/>
-                  <Button buttonType='submit' variant='primary' text='Sign up'/>
+                  <Button buttonType='button' variant='secondary' text='Sign in instead' onClicked={onNavigateToLoginClicked} />
+                  <Button buttonType='submit' variant='primary' text='Sign up' />
                   <Stack.Item growthFactor={1} shrinkFactor={1} />
                 </Stack>
               </Stack>

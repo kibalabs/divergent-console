@@ -101,8 +101,8 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
                 <Spacing variant={PaddingSize.Wide} />
                 <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
                   <Stack.Item growthFactor={1} shrinkFactor={1} />
-                  <Button buttonType='button' variant='secondary' text='Create account' onClicked={onCreateAccountClicked}/>
-                  <Button buttonType='submit' variant='primary' text='Sign in'/>
+                  <Button buttonType='button' variant='secondary' text='Create account' onClicked={onCreateAccountClicked} />
+                  <Button buttonType='submit' variant='primary' text='Sign in' />
                   <Stack.Item growthFactor={1} shrinkFactor={1} />
                 </Stack>
               </Stack>
