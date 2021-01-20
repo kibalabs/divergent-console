@@ -65,7 +65,7 @@ export const ForgotPasswordPage = (props: IForgotPasswordPageProps): React.React
             <Spacing variant={PaddingSize.Wide} />
             <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
               <Stack.Item growthFactor={1} shrinkFactor={1} />
-              <Button buttonType='submit' variant='primary' text='Email me a recovery link'/>
+              <Button buttonType='submit' variant='primary' text='Email me a recovery link' />
               <Stack.Item growthFactor={1} shrinkFactor={1} />
             </Stack>
           </Stack>
