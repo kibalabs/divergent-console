@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Alignment, Box, Button, ContainingView, Direction, Form, InputType, PaddingSize, SingleLineInput, Spacing, Stack, Text } from '@kibalabs/ui-react';
+import { Alignment, Box, Button, ContainingView, Direction, Form, InputType, PaddingSize, ResponsiveContainingView, SingleLineInput, Spacing, Stack, Text, TextAlignment } from '@kibalabs/ui-react';
 
 import { asyncSleep, isEmailValid } from '../../util';
 
@@ -51,20 +51,23 @@ export const ForgotPasswordPage = (props: IForgotPasswordPageProps): React.React
     return (
       <Box variant='card' isFullWidth={false}>
         <Form onFormSubmitted={onRegisterClicked} isLoading={isLoading}>
-          <Text variant='header3'>Recover Password</Text>
-          <Spacing variant={PaddingSize.Wide} />
-          <SingleLineInput
-            inputWrapperVariant={emailError ? 'error' : undefined}
-            messageText={emailError || undefined}
-            placeholderText='Email Address'
-            inputType={InputType.Email}
-            value={email}
-            onValueChanged={onEmailTyped}
-          />
-          <Spacing variant={PaddingSize.Wide} />
-          <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
-            <Stack.Item growthFactor={1} shrinkFactor={1} />
-            <Button buttonType='submit' variant='primary' text='Email me a recovery link'/>
+          <Stack shouldAddGutters={true} direction={Direction.Vertical} childAlignment={Alignment.Fill}>
+            <Text variant='header2' alignment={TextAlignment.Center}>Recover Password</Text>
+            <Spacing variant={PaddingSize.Wide} />
+            <SingleLineInput
+              inputWrapperVariant={emailError ? 'error' : undefined}
+              messageText={emailError || undefined}
+              placeholderText='Email Address'
+              inputType={InputType.Email}
+              value={email}
+              onValueChanged={onEmailTyped}
+            />
+            <Spacing variant={PaddingSize.Wide} />
+            <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
+              <Stack.Item growthFactor={1} shrinkFactor={1} />
+              <Button buttonType='submit' variant='primary' text='Email me a recovery link'/>
+              <Stack.Item growthFactor={1} shrinkFactor={1} />
+            </Stack>
           </Stack>
         </Form>
       </Box>
@@ -74,19 +77,24 @@ export const ForgotPasswordPage = (props: IForgotPasswordPageProps): React.React
   const renderEmailSentForm = (): React.ReactElement => {
     return (
       <Box variant='card' isFullWidth={false}>
-        <Text variant='header3'>Recover Password</Text>
-        <Spacing variant={PaddingSize.Wide} />
-        <Text>An email has been sent. Please click the link when you get it.</Text>
+        <Stack shouldAddGutters={true} direction={Direction.Vertical} childAlignment={Alignment.Fill}>
+          <Text variant='header2' alignment={TextAlignment.Center}>Recover Password</Text>
+          <Spacing variant={PaddingSize.Wide} />
+          <Text>An email has been sent. Please click the link when you get it.</Text>
+        </Stack>
       </Box>
     );
   };
 
   return (
     <ContainingView>
-      <Spacing variant={PaddingSize.Wide} />
-      <Stack isFullHeight={true} isFullWidth={true} shouldAddGutters={true} direction={Direction.Vertical} childAlignment={Alignment.Center}>
-        {hasRecoverPasswordFormBeenSubmitted ? renderEmailSentForm() : renderRecoverPasswordForm()}
-      </Stack>
+      <ResponsiveContainingView sizeResponsive={{ base: 12, small: 8, medium: 6, large: 5 }}>
+        <Stack direction={Direction.Vertical} paddingVertical={PaddingSize.Wide2} isFullHeight={true}>
+          <Stack.Item growthFactor={1} shrinkFactor={1} />
+          {hasRecoverPasswordFormBeenSubmitted ? renderEmailSentForm() : renderRecoverPasswordForm()}
+          <Stack.Item growthFactor={1} shrinkFactor={1} />
+        </Stack>
+      </ResponsiveContainingView>
     </ContainingView>
   );
 };
