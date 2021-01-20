@@ -34,7 +34,7 @@ export const DomainCreatePage = (props: IDomainCreatePageProps): React.ReactElem
     setIsLoading(false);
   };
 
-  const onUrlChanged = (typedEmail: string): void => {
+  const onUrlChanged = (typedUrl: string): void => {
     if (urlError) {
       setUrlError(null);
     }
