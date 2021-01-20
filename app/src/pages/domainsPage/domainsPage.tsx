@@ -36,8 +36,8 @@ export const DomainsPage = (props: IDomainsPageProps): React.ReactElement => {
   };
 
   const onCreateDomainClicked = (): void => {
-    history.navigate(`/domains/create`);
-  }
+    history.navigate('/domains/create');
+  };
 
   return (
     <ContainingView>

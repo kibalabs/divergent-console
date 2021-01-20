@@ -117,65 +117,65 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
       <ResponsiveContainingView sizeResponsive={{ base: 12, small: 8, medium: 6, large: 5 }}>
         <Stack direction={Direction.Vertical} paddingVertical={PaddingSize.Wide2} isFullHeight={true}>
           <Stack.Item growthFactor={1} shrinkFactor={1} />
-            <Box variant='card' isFullWidth={false}>
-              <Form onFormSubmitted={onRegisterClicked} isLoading={isLoading}>
-                <Stack shouldAddGutters={true} direction={Direction.Vertical} childAlignment={Alignment.Fill}>
-                  <Text variant='header2' alignment={TextAlignment.Center}>Create account</Text>
-                  <Spacing variant={PaddingSize.Wide} />
-                  <Stack isFullHeight={true} isFullWidth={true} shouldAddGutters={true} direction={Direction.Horizontal} childAlignment={Alignment.Center}>
-                    <SingleLineInput
-                      inputWrapperVariant={firstNameError ? 'error' : undefined}
-                      messageText={firstNameError || undefined}
-                      placeholderText='First name'
-                      inputType={InputType.Text}
-                      value={firstName}
-                      onValueChanged={onFirstNameTyped}
-                    />
-                    <SingleLineInput
-                      inputWrapperVariant={lastNameError ? 'error' : undefined}
-                      messageText={lastNameError || undefined}
-                      placeholderText='Last name'
-                      inputType={InputType.Text}
-                      value={lastName}
-                      onValueChanged={onLastNameTyped}
-                    />
-                  </Stack>
+          <Box variant='card' isFullWidth={false}>
+            <Form onFormSubmitted={onRegisterClicked} isLoading={isLoading}>
+              <Stack shouldAddGutters={true} direction={Direction.Vertical} childAlignment={Alignment.Fill}>
+                <Text variant='header2' alignment={TextAlignment.Center}>Create account</Text>
+                <Spacing variant={PaddingSize.Wide} />
+                <Stack isFullHeight={true} isFullWidth={true} shouldAddGutters={true} direction={Direction.Horizontal} childAlignment={Alignment.Center}>
                   <SingleLineInput
-                    inputWrapperVariant={emailError ? 'error' : undefined}
-                    messageText={emailError || undefined}
-                    placeholderText='Email Address'
-                    inputType={InputType.Email}
-                    value={email}
-                    onValueChanged={onEmailTyped}
+                    inputWrapperVariant={firstNameError ? 'error' : undefined}
+                    messageText={firstNameError || undefined}
+                    placeholderText='First name'
+                    inputType={InputType.Text}
+                    value={firstName}
+                    onValueChanged={onFirstNameTyped}
                   />
-                  <Stack isFullHeight={true} isFullWidth={true} shouldAddGutters={true} direction={Direction.Horizontal} childAlignment={Alignment.Center}>
-                    <SingleLineInput
-                      inputWrapperVariant={passwordError ? 'error' : undefined}
-                      messageText={passwordError || undefined}
-                      placeholderText='Password'
-                      inputType={InputType.Password}
-                      value={password}
-                      onValueChanged={onPasswordTyped}
-                    />
-                    <SingleLineInput
-                      inputWrapperVariant={confirmedPasswordError ? 'error' : undefined}
-                      messageText={confirmedPasswordError || undefined}
-                      placeholderText='Confirm'
-                      inputType={InputType.Password}
-                      value={confirmedPassword}
-                      onValueChanged={onConfirmedPasswordTyped}
-                    />
-                  </Stack>
-                  <Spacing variant={PaddingSize.Wide} />
-                  <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
-                    <Stack.Item growthFactor={1} shrinkFactor={1} />
-                    <Button buttonType='button' variant='secondary' text='Sign in instead' onClicked={onNavigateToLoginClicked}/>
-                    <Button buttonType='submit' variant='primary' text='Sign up'/>
-                    <Stack.Item growthFactor={1} shrinkFactor={1} />
-                  </Stack>
+                  <SingleLineInput
+                    inputWrapperVariant={lastNameError ? 'error' : undefined}
+                    messageText={lastNameError || undefined}
+                    placeholderText='Last name'
+                    inputType={InputType.Text}
+                    value={lastName}
+                    onValueChanged={onLastNameTyped}
+                  />
                 </Stack>
-              </Form>
-            </Box>
+                <SingleLineInput
+                  inputWrapperVariant={emailError ? 'error' : undefined}
+                  messageText={emailError || undefined}
+                  placeholderText='Email Address'
+                  inputType={InputType.Email}
+                  value={email}
+                  onValueChanged={onEmailTyped}
+                />
+                <Stack isFullHeight={true} isFullWidth={true} shouldAddGutters={true} direction={Direction.Horizontal} childAlignment={Alignment.Center}>
+                  <SingleLineInput
+                    inputWrapperVariant={passwordError ? 'error' : undefined}
+                    messageText={passwordError || undefined}
+                    placeholderText='Password'
+                    inputType={InputType.Password}
+                    value={password}
+                    onValueChanged={onPasswordTyped}
+                  />
+                  <SingleLineInput
+                    inputWrapperVariant={confirmedPasswordError ? 'error' : undefined}
+                    messageText={confirmedPasswordError || undefined}
+                    placeholderText='Confirm'
+                    inputType={InputType.Password}
+                    value={confirmedPassword}
+                    onValueChanged={onConfirmedPasswordTyped}
+                  />
+                </Stack>
+                <Spacing variant={PaddingSize.Wide} />
+                <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
+                  <Stack.Item growthFactor={1} shrinkFactor={1} />
+                  <Button buttonType='button' variant='secondary' text='Sign in instead' onClicked={onNavigateToLoginClicked}/>
+                  <Button buttonType='submit' variant='primary' text='Sign up'/>
+                  <Stack.Item growthFactor={1} shrinkFactor={1} />
+                </Stack>
+              </Stack>
+            </Form>
+          </Box>
           <Stack.Item growthFactor={1} shrinkFactor={1} />
         </Stack>
       </ResponsiveContainingView>

@@ -5,8 +5,8 @@ import { buildTheme, KibaApp } from '@kibalabs/ui-react';
 import { Helmet } from 'react-helmet';
 
 import { CreateLinkPage } from './pages/createLinkPage';
-import { DomainPage } from './pages/domainPage';
 import { DomainCreatePage } from './pages/domainCreatePage';
+import { DomainPage } from './pages/domainPage';
 import { DomainsPage } from './pages/domainsPage';
 import { EmptyPage } from './pages/emptyPage';
 import { ForgotPasswordPage } from './pages/forgotPasswordPage';

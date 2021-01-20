@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Alignment, Box, Button, ContainingView, Direction, Form, InputType, PaddingSize, PaddingView, ResponsiveContainingView, SingleLineInput, Spacing, Stack, Text, TextAlignment } from '@kibalabs/ui-react';
-import { asyncSleep } from '../../util';
 import { useHistory } from '@kibalabs/core-react';
+import { Alignment, Box, Button, ContainingView, Direction, Form, InputType, PaddingSize, ResponsiveContainingView, SingleLineInput, Spacing, Stack, Text, TextAlignment } from '@kibalabs/ui-react';
+
+import { asyncSleep } from '../../util';
 
 export interface IDomainCreatePageProps {
 }
