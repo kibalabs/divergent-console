@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { Alignment, ContainingView, Direction, PaddingSize, Spacing, Stack, Text } from '@kibalabs/ui-react';
-import { asyncSleep } from '../util';
-import { Domain, DOMAIN_ID_MAP, Link, LINK_ID_MAP } from '../model';
 import { KibaException } from '@kibalabs/core';
+import { Alignment, ContainingView, Direction, PaddingSize, Spacing, Stack, Text } from '@kibalabs/ui-react';
+
+import { Domain, DOMAIN_ID_MAP, Link, LINK_ID_MAP } from '../model';
+import { asyncSleep } from '../util';
 
 export interface ILinkPageProps {
   domainId: string;
@@ -16,7 +17,7 @@ export const LinkPage = (props: ILinkPageProps): React.ReactElement => {
 
   React.useEffect((): void => {
     loadLink(props.domainId, props.linkId);
-  }, [props.domainId]);
+  }, [props.domainId, props.linkId]);
 
   const loadLink = (domainId: string, linkId: string): void => {
     asyncSleep(300).then((): void => {

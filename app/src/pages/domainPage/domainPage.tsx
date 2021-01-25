@@ -46,7 +46,7 @@ export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
 
   const onViewLinkClicked = (link: Link): void => {
     navigator.navigateTo(`/domains/${props.domainId}/links/${link.linkId}`);
-  }
+  };
 
   return (
     <ContainingView>

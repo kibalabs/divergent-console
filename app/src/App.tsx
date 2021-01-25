@@ -55,7 +55,7 @@ const theme = buildTheme({
   },
   texts: {
     light: {
-      'color': '$colors.textLight50',
+      color: '$colors.textLight50',
     },
   },
 });

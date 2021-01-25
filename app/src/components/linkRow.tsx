@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Alignment, Box, Direction, Image, KibaIcon, Stack, Text, Button } from '@kibalabs/ui-react';
+import { Alignment, Box, Button, Direction, Image, KibaIcon, Stack, Text } from '@kibalabs/ui-react';
 
 import { Link } from '../model';
 
@@ -13,8 +13,10 @@ export const LinkRow = (props: ILinkRowProps): React.ReactElement => {
   const destinationUrl = new URL(props.link.destination);
 
   const onViewClicked = (): void => {
-    props.onViewLinkClicked(props.link);
-  }
+    if (props.onViewLinkClicked) {
+      props.onViewLinkClicked(props.link);
+    }
+  };
 
   return (
     <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center} contentAlignment={Alignment.Start} isFullWidth={false}>
