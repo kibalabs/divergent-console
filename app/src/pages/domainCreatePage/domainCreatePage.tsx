@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useHistory } from '@kibalabs/core-react';
+import { useNavigator } from '@kibalabs/core-react';
 import { Alignment, Box, Button, ContainingView, Direction, Form, InputType, PaddingSize, ResponsiveContainingView, SingleLineInput, Spacing, Stack, Text, TextAlignment } from '@kibalabs/ui-react';
 
 import { asyncSleep } from '../../util';
@@ -10,7 +10,7 @@ export interface IDomainCreatePageProps {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const DomainCreatePage = (props: IDomainCreatePageProps): React.ReactElement => {
-  const history = useHistory();
+  const navigator = useNavigator();
   const [url, setUrl] = React.useState<string | null>(null);
   const [urlError, setUrlError] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
@@ -25,7 +25,7 @@ export const DomainCreatePage = (props: IDomainCreatePageProps): React.ReactElem
       setIsLoading(true);
       try {
         await asyncSleep(1000);
-        history.navigate('/domains');
+        navigator.navigateTo('/domains');
       } catch (error) {
         // TODO(krishan711): error to be rendered when domain creation fails
         console.error('error', error);

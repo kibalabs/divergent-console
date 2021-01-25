@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { KibaException } from '@kibalabs/core';
-import { useHistory } from '@kibalabs/core-react';
+import { useNavigator } from '@kibalabs/core-react';
 import { Alignment, Button, ContainingView, Direction, PaddingSize, Spacing, Stack, Text } from '@kibalabs/ui-react';
 
-import { Domain, DOMAIN_ID_LINK_MAP, DOMAINS, HomeDomain } from '../../model';
+import { Domain, DOMAIN_ID_LINKS_MAP, DOMAINS, HomeDomain } from '../../model';
 import { asyncSleep } from '../../util';
 import { HomeDomainCard } from './components';
 
@@ -13,7 +13,7 @@ interface IDomainsPageProps {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const DomainsPage = (props: IDomainsPageProps): React.ReactElement => {
-  const history = useHistory();
+  const navigator = useNavigator();
   const [homeDomains, setHomeDomains] = React.useState<HomeDomain[] | null>(null);
 
   React.useEffect((): void => {
@@ -23,7 +23,7 @@ export const DomainsPage = (props: IDomainsPageProps): React.ReactElement => {
   const loadHomeDomains = (): void => {
     asyncSleep(300).then((): void => {
       setHomeDomains(DOMAINS.map((domain: Domain): HomeDomain => {
-        return new HomeDomain(domain, DOMAIN_ID_LINK_MAP[domain.domainId].slice(0, 3), DOMAIN_ID_LINK_MAP[domain.domainId].length);
+        return new HomeDomain(domain, DOMAIN_ID_LINKS_MAP[domain.domainId].slice(0, 3), DOMAIN_ID_LINKS_MAP[domain.domainId].length);
       }));
     }).catch((error: KibaException): void => {
       console.error('error', error);
@@ -32,11 +32,11 @@ export const DomainsPage = (props: IDomainsPageProps): React.ReactElement => {
   };
 
   const onManageClicked = (domainId: string): void => {
-    history.navigate(`/domains/${domainId}`);
+    navigator.navigateTo(`/domains/${domainId}`);
   };
 
   const onCreateDomainClicked = (): void => {
-    history.navigate('/domains/create');
+    navigator.navigateTo('/domains/create');
   };
 
   return (

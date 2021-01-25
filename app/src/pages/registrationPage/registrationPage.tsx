@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useHistory } from '@kibalabs/core-react';
+import { useNavigator } from '@kibalabs/core-react';
 import { Alignment, Box, Button, ContainingView, Direction, Form, InputType, PaddingSize, ResponsiveContainingView, SingleLineInput, Spacing, Stack, Text, TextAlignment } from '@kibalabs/ui-react';
 
 import { asyncSleep, isEmailValid } from '../../util';
@@ -10,7 +10,7 @@ export interface IRegistrationPageProps {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElement => {
-  const history = useHistory();
+  const navigator = useNavigator();
   const [firstName, setFirstName] = React.useState<string | null>(null);
   const [firstNameError, setFirstNameError] = React.useState<string | null>(null);
   const [lastName, setLastName] = React.useState<string | null>(null);
@@ -64,7 +64,7 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
         asyncSleep(3000);
         // eslint-disable-next-line no-console
         console.log('email', email && email.toLowerCase(), 'password', password);
-        history.navigate('/domains');
+        navigator.navigateTo('/domains');
       } catch (error) {
         // TODO(rikhil): error to be rendered when registration fails
         console.error('error', error);
@@ -109,7 +109,7 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
   };
 
   const onNavigateToLoginClicked = (): void => {
-    history.navigate('/login');
+    navigator.navigateTo('/login');
   };
 
   return (
@@ -169,7 +169,7 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
                 <Spacing variant={PaddingSize.Wide} />
                 <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
                   <Stack.Item growthFactor={1} shrinkFactor={1} />
-                  <Button buttonType='button' variant='secondary' text='Sign in instead' onClicked={onNavigateToLoginClicked} />
+                  <Button variant='secondary' text='Sign in instead' onClicked={onNavigateToLoginClicked} />
                   <Button buttonType='submit' variant='primary' text='Sign up' />
                   <Stack.Item growthFactor={1} shrinkFactor={1} />
                 </Stack>
