@@ -53,6 +53,11 @@ const theme = buildTheme({
       },
     },
   },
+  texts: {
+    light: {
+      color: '$colors.textLight50',
+    },
+  },
 });
 
 export const App = (): React.ReactElement => {

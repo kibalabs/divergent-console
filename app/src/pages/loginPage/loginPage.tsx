@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useHistory } from '@kibalabs/core-react';
+import { useNavigator } from '@kibalabs/core-react';
 import { Alignment, Box, Button, ContainingView, Direction, Form, InputType, Link, PaddingSize, ResponsiveContainingView, SingleLineInput, Spacing, Stack, Text, TextAlignment } from '@kibalabs/ui-react';
 
 import { asyncSleep, isEmailValid } from '../../util';
@@ -10,7 +10,7 @@ export interface ILoginPageProps {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
-  const history = useHistory();
+  const navigator = useNavigator();
   const [email, setEmail] = React.useState<string | null>(null);
   const [emailError, setEmailError] = React.useState<string | null>(null);
   const [password, setPassword] = React.useState<string | null>(null);
@@ -41,7 +41,7 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
         await asyncSleep(1000);
         // eslint-disable-next-line no-console
         console.log('email', email && email.toLowerCase(), 'password', password);
-        history.navigate('/domains');
+        navigator.navigateTo('/domains');
       } catch (error) {
         // TODO(rikhil): error to be rendered when login fails
         console.error('error', error);
@@ -65,7 +65,7 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
   };
 
   const onCreateAccountClicked = (): void => {
-    history.navigate('/register');
+    navigator.navigateTo('/register');
   };
 
   return (
