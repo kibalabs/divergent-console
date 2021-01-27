@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useNavigator } from '@kibalabs/core-react';
-import { Alignment, Box, Button, ContainingView, Direction, Form, InputType, PaddingSize, ResponsiveContainingView, SingleLineInput, Spacing, Stack, Text, TextAlignment } from '@kibalabs/ui-react';
+import { Alignment, Box, Button, Direction, Form, InputType, PaddingSize, ResponsiveContainingView, SingleLineInput, Spacing, Stack, Text, TextAlignment } from '@kibalabs/ui-react';
 
 import { asyncSleep, isEmailValid } from '../../util';
 
@@ -121,7 +121,7 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
             <Stack shouldAddGutters={true} direction={Direction.Vertical} childAlignment={Alignment.Fill}>
               <Text variant='header2' alignment={TextAlignment.Center}>Create account</Text>
               <Spacing variant={PaddingSize.Wide} />
-              <Stack isFullWidth={true} shouldAddGutters={true} directionResponsive={{base: Direction.Vertical, large: Direction.Horizontal}} childAlignment={Alignment.Fill}>
+              <Stack isFullWidth={true} shouldAddGutters={true} directionResponsive={{ base: Direction.Vertical, large: Direction.Horizontal }} childAlignment={Alignment.Fill}>
                 <Stack.Item growthFactor={1} shrinkFactor={1}>
                   <SingleLineInput
                     inputWrapperVariant={firstNameError ? 'error' : undefined}
@@ -151,7 +151,7 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
                 value={email}
                 onValueChanged={onEmailTyped}
               />
-              <Stack isFullWidth={true} shouldAddGutters={true} directionResponsive={{base: Direction.Vertical, large: Direction.Horizontal}} childAlignment={Alignment.Fill}>
+              <Stack isFullWidth={true} shouldAddGutters={true} directionResponsive={{ base: Direction.Vertical, large: Direction.Horizontal }} childAlignment={Alignment.Fill}>
                 <Stack.Item growthFactor={1} shrinkFactor={1}>
                   <SingleLineInput
                     inputWrapperVariant={passwordError ? 'error' : undefined}
