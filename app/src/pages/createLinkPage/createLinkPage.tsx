@@ -5,7 +5,7 @@ import { useNavigator } from '@kibalabs/core-react';
 import { Alignment, Box, Button, Direction, Form, InputType, PaddingSize, ResponsiveContainingView, SingleLineInput, Spacing, Stack, Text, TextAlignment } from '@kibalabs/ui-react';
 
 import { Domain, DOMAIN_ID_MAP } from '../../model';
-import { asyncSleep } from '../../util';
+import { asyncSleep, isPathValid, isUrlValid } from '../../util';
 
 export interface ICreateLinkPageProps {
   domainId: string;
@@ -16,8 +16,8 @@ export const CreateLinkPage = (props: ICreateLinkPageProps): React.ReactElement 
   const [domain, setDomain] = React.useState<Domain | null>(null);
   const [path, setPath] = React.useState<string | null>(null);
   const [pathError, setPathError] = React.useState<string | null>(null);
-  const [target, setPassword] = React.useState<string | null>(null);
-  const [targetError, setPasswordError] = React.useState<string | null>(null);
+  const [target, setTarget] = React.useState<string | null>(null);
+  const [targetError, setTargetError] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   React.useEffect((): void => {
@@ -33,26 +33,6 @@ export const CreateLinkPage = (props: ICreateLinkPageProps): React.ReactElement 
     });
   };
 
-  const isPathValid = (input: string): boolean => {
-    const pattern = new RegExp('^'
-      + '(\\/[-a-z\\d%_.~+]*)*',
-    'i');
-    return !!pattern.test(input);
-  };
-
-  const isUrlValid = (input: string): boolean => {
-    const pattern = new RegExp('^'
-      + '(https?:\\/\\/)?' // protocol
-      + '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' // domain name
-      + '((\\d{1,3}\\.){3}\\d{1,3}))' // OR ip (v4) address
-      + '(\\:\\d+)?' // port
-      + '(\\/[-a-z\\d%_.~+]*)*' // path
-      + '(\\?[;&a-z\\d%_.~+=-]*)?' // query string
-      + '(\\#[-a-z\\d_]*)?$', // fragment locator
-    'i');
-    return !!pattern.test(input);
-  };
-
   const onCreateLinkClicked = async (): Promise<void> => {
     let hasErrors = false;
     if (!path) {
@@ -64,11 +44,11 @@ export const CreateLinkPage = (props: ICreateLinkPageProps): React.ReactElement 
       hasErrors = true;
     }
     if (!target) {
-      setPasswordError('Enter a target');
+      setTargetError('Enter a target');
       hasErrors = true;
     }
     if (target && !isUrlValid(target)) {
-      setPasswordError('Enter a valid target');
+      setTargetError('Enter a valid target');
       hasErrors = true;
     }
     if (!hasErrors) {
@@ -91,11 +71,11 @@ export const CreateLinkPage = (props: ICreateLinkPageProps): React.ReactElement 
     setPath(typedPath);
   };
 
-  const onPasswordTyped = (typedPassword: string): void => {
+  const onTargetTyped = (typedTarget: string): void => {
     if (targetError) {
-      setPasswordError(null);
+      setTargetError(null);
     }
-    setPassword(typedPassword);
+    setTarget(typedTarget);
   };
 
   const onCancelClicked = (): void => {
@@ -134,7 +114,7 @@ from
                     placeholderText='Target URL e.g. https://www.kibalabs.com/page1'
                     inputType={InputType.Url}
                     value={target}
-                    onValueChanged={onPasswordTyped}
+                    onValueChanged={onTargetTyped}
                   />
                   <Spacing variant={PaddingSize.Wide} />
                   <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center} contentAlignment={Alignment.Center}>
