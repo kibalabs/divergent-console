@@ -29,8 +29,6 @@ export const ForgotPasswordPage = (props: IForgotPasswordPageProps): React.React
       setIsLoading(true);
       try {
         asyncSleep(3000);
-        // eslint-disable-next-line no-console
-        console.log('email', email && email.toLowerCase());
         setHasRecoverPasswordFormBeenSubmitted(true);
       } catch (error) {
         // TODO(rikhil): check that the error is correctly rendered when the email is 'wrong'
