@@ -10,7 +10,7 @@ import { DomainPage } from './pages/domainPage';
 import { DomainsPage } from './pages/domainsPage';
 import { EmptyPage } from './pages/emptyPage';
 import { ForgotPasswordPage } from './pages/forgotPasswordPage';
-import { LinkPage } from './pages/linkPage';
+import { LinkPage } from './pages/linkPage/linkPage';
 import { LoginPage } from './pages/loginPage';
 import { NotFoundPage } from './pages/notFoundPage';
 import { RegistrationPage } from './pages/registrationPage';

@@ -113,16 +113,16 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
   };
 
   return (
-    <ContainingView>
-      <ResponsiveContainingView sizeResponsive={{ base: 12, small: 8, medium: 6, large: 5 }}>
-        <Stack direction={Direction.Vertical} paddingVertical={PaddingSize.Wide2} isFullHeight={true}>
-          <Stack.Item growthFactor={1} shrinkFactor={1} />
-          <Box variant='card' isFullWidth={false}>
-            <Form onFormSubmitted={onRegisterClicked} isLoading={isLoading}>
-              <Stack shouldAddGutters={true} direction={Direction.Vertical} childAlignment={Alignment.Fill}>
-                <Text variant='header2' alignment={TextAlignment.Center}>Create account</Text>
-                <Spacing variant={PaddingSize.Wide} />
-                <Stack isFullHeight={true} isFullWidth={true} shouldAddGutters={true} direction={Direction.Horizontal} childAlignment={Alignment.Center}>
+    <ResponsiveContainingView sizeResponsive={{ base: 12, small: 8, medium: 6, large: 6 }}>
+      <Stack direction={Direction.Vertical} paddingVertical={PaddingSize.Wide2} isFullHeight={true}>
+        <Stack.Item growthFactor={1} shrinkFactor={1} />
+        <Box variant='card' isFullWidth={false}>
+          <Form onFormSubmitted={onRegisterClicked} isLoading={isLoading}>
+            <Stack shouldAddGutters={true} direction={Direction.Vertical} childAlignment={Alignment.Fill}>
+              <Text variant='header2' alignment={TextAlignment.Center}>Create account</Text>
+              <Spacing variant={PaddingSize.Wide} />
+              <Stack isFullWidth={true} shouldAddGutters={true} directionResponsive={{base: Direction.Vertical, large: Direction.Horizontal}} childAlignment={Alignment.Fill}>
+                <Stack.Item growthFactor={1} shrinkFactor={1}>
                   <SingleLineInput
                     inputWrapperVariant={firstNameError ? 'error' : undefined}
                     messageText={firstNameError || undefined}
@@ -131,6 +131,8 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
                     value={firstName}
                     onValueChanged={onFirstNameTyped}
                   />
+                </Stack.Item>
+                <Stack.Item growthFactor={1} shrinkFactor={1}>
                   <SingleLineInput
                     inputWrapperVariant={lastNameError ? 'error' : undefined}
                     messageText={lastNameError || undefined}
@@ -139,16 +141,18 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
                     value={lastName}
                     onValueChanged={onLastNameTyped}
                   />
-                </Stack>
-                <SingleLineInput
-                  inputWrapperVariant={emailError ? 'error' : undefined}
-                  messageText={emailError || undefined}
-                  placeholderText='Email Address'
-                  inputType={InputType.Email}
-                  value={email}
-                  onValueChanged={onEmailTyped}
-                />
-                <Stack isFullHeight={true} isFullWidth={true} shouldAddGutters={true} direction={Direction.Horizontal} childAlignment={Alignment.Center}>
+                </Stack.Item>
+              </Stack>
+              <SingleLineInput
+                inputWrapperVariant={emailError ? 'error' : undefined}
+                messageText={emailError || undefined}
+                placeholderText='Email Address'
+                inputType={InputType.Email}
+                value={email}
+                onValueChanged={onEmailTyped}
+              />
+              <Stack isFullWidth={true} shouldAddGutters={true} directionResponsive={{base: Direction.Vertical, large: Direction.Horizontal}} childAlignment={Alignment.Fill}>
+                <Stack.Item growthFactor={1} shrinkFactor={1}>
                   <SingleLineInput
                     inputWrapperVariant={passwordError ? 'error' : undefined}
                     messageText={passwordError || undefined}
@@ -157,6 +161,8 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
                     value={password}
                     onValueChanged={onPasswordTyped}
                   />
+                </Stack.Item>
+                <Stack.Item growthFactor={1} shrinkFactor={1}>
                   <SingleLineInput
                     inputWrapperVariant={confirmedPasswordError ? 'error' : undefined}
                     messageText={confirmedPasswordError || undefined}
@@ -165,20 +171,20 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
                     value={confirmedPassword}
                     onValueChanged={onConfirmedPasswordTyped}
                   />
-                </Stack>
-                <Spacing variant={PaddingSize.Wide} />
-                <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
-                  <Stack.Item growthFactor={1} shrinkFactor={1} />
-                  <Button variant='secondary' text='Sign in instead' onClicked={onNavigateToLoginClicked} />
-                  <Button buttonType='submit' variant='primary' text='Sign up' />
-                  <Stack.Item growthFactor={1} shrinkFactor={1} />
-                </Stack>
+                </Stack.Item>
               </Stack>
-            </Form>
-          </Box>
-          <Stack.Item growthFactor={1} shrinkFactor={1} />
-        </Stack>
-      </ResponsiveContainingView>
-    </ContainingView>
+              <Spacing variant={PaddingSize.Wide} />
+              <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
+                <Stack.Item growthFactor={1} shrinkFactor={1} />
+                <Button variant='secondary' text='Sign in instead' onClicked={onNavigateToLoginClicked} />
+                <Button buttonType='submit' variant='primary' text='Sign up' />
+                <Stack.Item growthFactor={1} shrinkFactor={1} />
+              </Stack>
+            </Stack>
+          </Form>
+        </Box>
+        <Stack.Item growthFactor={1} shrinkFactor={1} />
+      </Stack>
+    </ResponsiveContainingView>
   );
 };
