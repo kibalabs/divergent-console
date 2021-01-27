@@ -96,7 +96,7 @@ export const CreateLinkPage = (props: ICreateLinkPageProps): React.ReactElement 
               ) : (
                 <React.Fragment>
                   <Text>
-from
+                    from
                     <Text variant='bold'>{`${domain.url}/`}</Text>
                   </Text>
                   <SingleLineInput
