@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { KibaException } from '@kibalabs/core';
 import { useNavigator } from '@kibalabs/core-react';
 import { Alignment, Box, Button, Direction, Form, InputType, PaddingSize, ResponsiveContainingView, SingleLineInput, Spacing, Stack, Text, TextAlignment } from '@kibalabs/ui-react';
 
+import { Domain, DOMAIN_ID_MAP } from '../../model';
 import { asyncSleep } from '../../util';
-import { DOMAIN_ID_MAP, Domain } from '../../model';
-import { KibaException } from '@kibalabs/core';
 
 export interface ICreateLinkPageProps {
   domainId: string;
@@ -33,25 +33,25 @@ export const CreateLinkPage = (props: ICreateLinkPageProps): React.ReactElement 
     });
   };
 
-  const isPathValid = (path: string): boolean => {
-    var pattern = new RegExp('^' +
-      '(\\/[-a-z\\d%_.~+]*)*'
-    , 'i');
-    return !!pattern.test(path);
-  }
+  const isPathValid = (input: string): boolean => {
+    const pattern = new RegExp('^'
+      + '(\\/[-a-z\\d%_.~+]*)*',
+    'i');
+    return !!pattern.test(input);
+  };
 
-  const isUrlValid = (url: string): boolean => {
-    var pattern = new RegExp('^' +
-      '(https?:\\/\\/)?' + // protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-      '(\\:\\d+)?' + // port
-      '(\\/[-a-z\\d%_.~+]*)*' + // path
-      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-      '(\\#[-a-z\\d_]*)?$' // fragment locator
-    , 'i');
-    return !!pattern.test(url);
-  }
+  const isUrlValid = (input: string): boolean => {
+    const pattern = new RegExp('^'
+      + '(https?:\\/\\/)?' // protocol
+      + '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' // domain name
+      + '((\\d{1,3}\\.){3}\\d{1,3}))' // OR ip (v4) address
+      + '(\\:\\d+)?' // port
+      + '(\\/[-a-z\\d%_.~+]*)*' // path
+      + '(\\?[;&a-z\\d%_.~+=-]*)?' // query string
+      + '(\\#[-a-z\\d_]*)?$', // fragment locator
+    'i');
+    return !!pattern.test(input);
+  };
 
   const onCreateLinkClicked = async (): Promise<void> => {
     let hasErrors = false;
@@ -100,7 +100,7 @@ export const CreateLinkPage = (props: ICreateLinkPageProps): React.ReactElement 
 
   const onCancelClicked = (): void => {
     navigator.navigateTo(`/domains/${props.domainId}`);
-  }
+  };
 
   return (
     <ResponsiveContainingView sizeResponsive={{ base: 12, small: 8, medium: 6, large: 5 }}>
@@ -115,7 +115,10 @@ export const CreateLinkPage = (props: ICreateLinkPageProps): React.ReactElement 
                 <Text variant='light-small'>Loading...</Text>
               ) : (
                 <React.Fragment>
-                  <Text>from <Text variant='bold'>{`${domain.url}/`}</Text></Text>
+                  <Text>
+from
+                    <Text variant='bold'>{`${domain.url}/`}</Text>
+                  </Text>
                   <SingleLineInput
                     inputWrapperVariant={pathError ? 'error' : undefined}
                     messageText={pathError || undefined}
