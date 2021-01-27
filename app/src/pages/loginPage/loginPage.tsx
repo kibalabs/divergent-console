@@ -39,8 +39,6 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
       setIsLoading(true);
       try {
         await asyncSleep(1000);
-        // eslint-disable-next-line no-console
-        console.log('email', email && email.toLowerCase(), 'password', password);
         navigator.navigateTo('/domains');
       } catch (error) {
         // TODO(rikhil): error to be rendered when login fails
@@ -93,16 +91,13 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
                 value={password}
                 onValueChanged={onPasswordTyped}
               />
-              <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
-                <Stack.Item growthFactor={1} shrinkFactor={1} />
+              <Stack.Item alignment={Alignment.End}>
                 <Link shouldOpenSameTab={true} text='Forgot Password?' target='/forgot-password' />
-              </Stack>
+              </Stack.Item>
               <Spacing variant={PaddingSize.Wide} />
-              <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
-                <Stack.Item growthFactor={1} shrinkFactor={1} />
+              <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center} contentAlignment={Alignment.Center}>
                 <Button buttonType='button' variant='secondary' text='Create account' onClicked={onCreateAccountClicked} />
                 <Button buttonType='submit' variant='primary' text='Sign in' />
-                <Stack.Item growthFactor={1} shrinkFactor={1} />
               </Stack>
             </Stack>
           </Form>

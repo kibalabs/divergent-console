@@ -40,8 +40,8 @@ export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
     });
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   const onCreateLinkClicked = (): void => {
+    navigator.navigateTo(`/domains/${props.domainId}/links/create`);
   };
 
   const onViewLinkClicked = (link: Link): void => {

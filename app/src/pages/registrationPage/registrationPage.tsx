@@ -62,8 +62,6 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
       setIsLoading(true);
       try {
         asyncSleep(3000);
-        // eslint-disable-next-line no-console
-        console.log('email', email && email.toLowerCase(), 'password', password);
         navigator.navigateTo('/domains');
       } catch (error) {
         // TODO(rikhil): error to be rendered when registration fails
@@ -174,11 +172,9 @@ export const RegistrationPage = (props: IRegistrationPageProps): React.ReactElem
                 </Stack.Item>
               </Stack>
               <Spacing variant={PaddingSize.Wide} />
-              <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
-                <Stack.Item growthFactor={1} shrinkFactor={1} />
+              <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center} contentAlignment={Alignment.Center}>
                 <Button variant='secondary' text='Sign in instead' onClicked={onNavigateToLoginClicked} />
                 <Button buttonType='submit' variant='primary' text='Sign up' />
-                <Stack.Item growthFactor={1} shrinkFactor={1} />
               </Stack>
             </Stack>
           </Form>
