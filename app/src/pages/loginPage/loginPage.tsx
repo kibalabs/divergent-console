@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useNavigator } from '@kibalabs/core-react';
-import { Alignment, Box, Button, ContainingView, Direction, Form, InputType, Link, PaddingSize, ResponsiveContainingView, SingleLineInput, Spacing, Stack, Text, TextAlignment } from '@kibalabs/ui-react';
+import { Alignment, Box, Button, Direction, Form, InputType, Link, PaddingSize, ResponsiveContainingView, SingleLineInput, Spacing, Stack, Text, TextAlignment } from '@kibalabs/ui-react';
 
 import { asyncSleep, isEmailValid } from '../../util';
 
@@ -69,48 +69,46 @@ export const LoginPage = (props: ILoginPageProps): React.ReactElement => {
   };
 
   return (
-    <ContainingView>
-      <ResponsiveContainingView sizeResponsive={{ base: 12, small: 8, medium: 6, large: 5 }}>
-        <Stack direction={Direction.Vertical} paddingVertical={PaddingSize.Wide2} isFullHeight={true}>
-          <Stack.Item growthFactor={1} shrinkFactor={1} />
-          <Box variant='card' isFullWidth={false}>
-            <Form onFormSubmitted={onLoginClicked} isLoading={isLoading}>
-              <Stack shouldAddGutters={true} direction={Direction.Vertical} childAlignment={Alignment.Fill}>
-                <Text variant='header2' alignment={TextAlignment.Center}>Welcome Back :)</Text>
-                <Spacing variant={PaddingSize.Wide} />
-                <SingleLineInput
-                  inputWrapperVariant={emailError ? 'error' : undefined}
-                  messageText={emailError || undefined}
-                  placeholderText='Email Address'
-                  inputType={InputType.Email}
-                  value={email}
-                  onValueChanged={onEmailTyped}
-                />
-                <SingleLineInput
-                  inputWrapperVariant={passwordError ? 'error' : undefined}
-                  messageText={passwordError || undefined}
-                  placeholderText='Password'
-                  inputType={InputType.Password}
-                  value={password}
-                  onValueChanged={onPasswordTyped}
-                />
-                <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
-                  <Stack.Item growthFactor={1} shrinkFactor={1} />
-                  <Link shouldOpenSameTab={true} text='Forgot Password?' target='/forgot-password' />
-                </Stack>
-                <Spacing variant={PaddingSize.Wide} />
-                <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
-                  <Stack.Item growthFactor={1} shrinkFactor={1} />
-                  <Button buttonType='button' variant='secondary' text='Create account' onClicked={onCreateAccountClicked} />
-                  <Button buttonType='submit' variant='primary' text='Sign in' />
-                  <Stack.Item growthFactor={1} shrinkFactor={1} />
-                </Stack>
+    <ResponsiveContainingView sizeResponsive={{ base: 12, small: 8, medium: 6, large: 5 }}>
+      <Stack direction={Direction.Vertical} paddingVertical={PaddingSize.Wide2} isFullHeight={true}>
+        <Stack.Item growthFactor={1} shrinkFactor={1} />
+        <Box variant='card' isFullWidth={false}>
+          <Form onFormSubmitted={onLoginClicked} isLoading={isLoading}>
+            <Stack shouldAddGutters={true} direction={Direction.Vertical} childAlignment={Alignment.Fill}>
+              <Text variant='header2' alignment={TextAlignment.Center}>Welcome Back :)</Text>
+              <Spacing variant={PaddingSize.Wide} />
+              <SingleLineInput
+                inputWrapperVariant={emailError ? 'error' : undefined}
+                messageText={emailError || undefined}
+                placeholderText='Email Address'
+                inputType={InputType.Email}
+                value={email}
+                onValueChanged={onEmailTyped}
+              />
+              <SingleLineInput
+                inputWrapperVariant={passwordError ? 'error' : undefined}
+                messageText={passwordError || undefined}
+                placeholderText='Password'
+                inputType={InputType.Password}
+                value={password}
+                onValueChanged={onPasswordTyped}
+              />
+              <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
+                <Stack.Item growthFactor={1} shrinkFactor={1} />
+                <Link shouldOpenSameTab={true} text='Forgot Password?' target='/forgot-password' />
               </Stack>
-            </Form>
-          </Box>
-          <Stack.Item growthFactor={1} shrinkFactor={1} />
-        </Stack>
-      </ResponsiveContainingView>
-    </ContainingView>
+              <Spacing variant={PaddingSize.Wide} />
+              <Stack direction={Direction.Horizontal} shouldAddGutters={true} childAlignment={Alignment.Center}>
+                <Stack.Item growthFactor={1} shrinkFactor={1} />
+                <Button buttonType='button' variant='secondary' text='Create account' onClicked={onCreateAccountClicked} />
+                <Button buttonType='submit' variant='primary' text='Sign in' />
+                <Stack.Item growthFactor={1} shrinkFactor={1} />
+              </Stack>
+            </Stack>
+          </Form>
+        </Box>
+        <Stack.Item growthFactor={1} shrinkFactor={1} />
+      </Stack>
+    </ResponsiveContainingView>
   );
 };

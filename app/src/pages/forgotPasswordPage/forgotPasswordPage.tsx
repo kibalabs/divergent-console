@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Alignment, Box, Button, ContainingView, Direction, Form, InputType, PaddingSize, ResponsiveContainingView, SingleLineInput, Spacing, Stack, Text, TextAlignment } from '@kibalabs/ui-react';
+import { Alignment, Box, Button, Direction, Form, InputType, PaddingSize, ResponsiveContainingView, SingleLineInput, Spacing, Stack, Text, TextAlignment } from '@kibalabs/ui-react';
 
 import { asyncSleep, isEmailValid } from '../../util';
 
@@ -87,14 +87,12 @@ export const ForgotPasswordPage = (props: IForgotPasswordPageProps): React.React
   };
 
   return (
-    <ContainingView>
-      <ResponsiveContainingView sizeResponsive={{ base: 12, small: 8, medium: 6, large: 5 }}>
-        <Stack direction={Direction.Vertical} paddingVertical={PaddingSize.Wide2} isFullHeight={true}>
-          <Stack.Item growthFactor={1} shrinkFactor={1} />
-          {hasRecoverPasswordFormBeenSubmitted ? renderEmailSentForm() : renderRecoverPasswordForm()}
-          <Stack.Item growthFactor={1} shrinkFactor={1} />
-        </Stack>
-      </ResponsiveContainingView>
-    </ContainingView>
+    <ResponsiveContainingView sizeResponsive={{ base: 12, small: 8, medium: 6, large: 5 }}>
+      <Stack direction={Direction.Vertical} paddingVertical={PaddingSize.Wide2} isFullHeight={true}>
+        <Stack.Item growthFactor={1} shrinkFactor={1} />
+        {hasRecoverPasswordFormBeenSubmitted ? renderEmailSentForm() : renderRecoverPasswordForm()}
+        <Stack.Item growthFactor={1} shrinkFactor={1} />
+      </Stack>
+    </ResponsiveContainingView>
   );
 };

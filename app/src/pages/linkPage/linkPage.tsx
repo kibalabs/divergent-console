@@ -3,8 +3,8 @@ import React from 'react';
 import { KibaException } from '@kibalabs/core';
 import { Alignment, ContainingView, Direction, PaddingSize, Spacing, Stack, Text } from '@kibalabs/ui-react';
 
-import { Domain, DOMAIN_ID_MAP, Link, LINK_ID_MAP } from '../model';
-import { asyncSleep } from '../util';
+import { Domain, DOMAIN_ID_MAP, Link, LINK_ID_MAP } from '../../model';
+import { asyncSleep } from '../../util';
 
 export interface ILinkPageProps {
   domainId: string;
