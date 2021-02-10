@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useNavigator } from '@kibalabs/core-react';
 
 export const HomePage = (): React.ReactElement => {
