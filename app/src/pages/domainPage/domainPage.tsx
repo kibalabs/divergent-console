@@ -50,7 +50,7 @@ export const DomainPage = (props: IDomainPageProps): React.ReactElement => {
 
   return (
     <ContainingView>
-      <Stack direction={Direction.Vertical} shouldAddGutters={true} paddingHorizontal={PaddingSize.Default}>
+      <Stack direction={Direction.Vertical} shouldAddGutters={true} paddingHorizontal={PaddingSize.Default} isFullWidth={true}>
         <Spacing variant={PaddingSize.Wide} />
         { !domain ? (
           <Text>Loading...</Text>

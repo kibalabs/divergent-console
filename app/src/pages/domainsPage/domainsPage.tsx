@@ -41,7 +41,7 @@ export const DomainsPage = (props: IDomainsPageProps): React.ReactElement => {
 
   return (
     <ContainingView>
-      <Stack direction={Direction.Vertical} shouldAddGutters={true} paddingHorizontal={PaddingSize.Default}>
+      <Stack direction={Direction.Vertical} shouldAddGutters={true} paddingHorizontal={PaddingSize.Default} isFullWidth={true}>
         <Spacing variant={PaddingSize.Wide} />
         <Stack direction={Direction.Horizontal} childAlignment={Alignment.Center}>
           <Text variant='header1'>Your Domains</Text>

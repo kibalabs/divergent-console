@@ -32,7 +32,7 @@ export const LinkPage = (props: ILinkPageProps): React.ReactElement => {
 
   return (
     <ContainingView>
-      <Stack direction={Direction.Vertical} shouldAddGutters={true} paddingHorizontal={PaddingSize.Default}>
+      <Stack direction={Direction.Vertical} shouldAddGutters={true} paddingHorizontal={PaddingSize.Default} isFullWidth={true}>
         <Spacing variant={PaddingSize.Wide} />
         { !domain || !link ? (
           <Text>Loading...</Text>
